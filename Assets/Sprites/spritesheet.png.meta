@@ -1,0 +1,216 @@
+fileFormatVersion: 2
+guid: c61c8005d2520c24eb4696a22414ffb1
+timeCreated: 1517915966
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: sprite_head
+    21300002: eye_1
+    21300004: eye_2
+    21300006: sprite_nose
+    21300008: sprite_mouth
+    21300010: sprite_arm_left
+    21300012: sprite_torso
+    21300014: sprite_arm_right
+    21300016: sprite_leg_left
+    21300018: sprite_leg_right
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sprite_head
+      rect:
+        serializedVersion: 2
+        x: 275.36157
+        y: 665.5883
+        width: 302.33765
+        height: 275.96075
+      alignment: 9
+      pivot: {x: 0.50155324, y: 0.49793923}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eye_1
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 817
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eye_2
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 826
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_nose
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 756
+        width: 22
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_mouth
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 713
+        width: 61
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_arm_left
+      rect:
+        serializedVersion: 2
+        x: 99.18674
+        y: 336.03882
+        width: 138.20958
+        height: 226.63226
+      alignment: 9
+      pivot: {x: 0.49789068, y: 0.4962276}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_torso
+      rect:
+        serializedVersion: 2
+        x: 286.13376
+        y: 311.51105
+        width: 281.7933
+        height: 350.02466
+      alignment: 9
+      pivot: {x: 0.5034408, y: 0.5013617}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_arm_right
+      rect:
+        serializedVersion: 2
+        x: 585.07965
+        y: 343.64078
+        width: 141.03595
+        height: 229.2042
+      alignment: 9
+      pivot: {x: 0.502853, y: 0.49894032}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_leg_left
+      rect:
+        serializedVersion: 2
+        x: 292.73715
+        y: 48.666393
+        width: 121.00482
+        height: 267.7016
+      alignment: 9
+      pivot: {x: 0.49388817, y: 0.498068}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_leg_right
+      rect:
+        serializedVersion: 2
+        x: 458.64334
+        y: 48.13021
+        width: 119.42532
+        height: 268.7371
+      alignment: 9
+      pivot: {x: 0.50120574, y: 0.49814403}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 99478139998946
+  assetBundleName: 
+  assetBundleVariant: 
