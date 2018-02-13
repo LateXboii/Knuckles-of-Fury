@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     private bool attacking = false;
     public float jumpForce;
     public bool animation_lool;
+    public float health;
     public Sprite isku;
     public Sprite TESTIHAHMO;
     Animator anim;
@@ -49,10 +50,11 @@ public class PlayerController : MonoBehaviour {
            
         }
        
-        if(Input.GetKeyDown(KeyCode.S) && !attacking)
+        if(Input.GetKeyDown(KeyCode.Z))
         {
-            Debug.Log("PUNCH");
+            Debug.Log("KICk");
             attacking = true;
+            anim.SetBool("Potkia", true);
 
         }
         if (Input.GetKeyDown(KeyCode.D) && !attacking)
@@ -61,23 +63,34 @@ public class PlayerController : MonoBehaviour {
             attacking = true;
            
         }
+       
+        
 
        
     }
 
-   void OnCollisionEnter2D(Collision2D col)
 
-    {
-        if(coll.gameObject.tag == "Enemy")
-        {
-            Destroy();
-        }
-        
-
-    }
 
     public void AnimationPlayed()
     {
         anim.SetBool("Iskee", false);
+        anim.SetBool("Potkia", false);
+    }
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "Enemy")
+        {
+            Debug.Log("Trigger tuli");
+        }
+    }
+
+    void TakeSomeDamage( int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Debug.Log("Dead)");
+        }
     }
 }
