@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knuckles Of Fury", "Knuckles Of Fury.csproj", "{F64C3B7E-17AF-2AAB-D0FD-4CF50A600E86}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knuckles Of Fury.Editor", "Knuckles Of Fury.Editor.csproj", "{B4C1F5A5-705A-03AE-C5C0-A6E34325E3EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{F64C3B7E-17AF-2AAB-D0FD-4CF50A600E86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F64C3B7E-17AF-2AAB-D0FD-4CF50A600E86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F64C3B7E-17AF-2AAB-D0FD-4CF50A600E86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4C1F5A5-705A-03AE-C5C0-A6E34325E3EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4C1F5A5-705A-03AE-C5C0-A6E34325E3EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4C1F5A5-705A-03AE-C5C0-A6E34325E3EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4C1F5A5-705A-03AE-C5C0-A6E34325E3EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
