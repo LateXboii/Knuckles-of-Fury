@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 9b214bdf1d0c6c64a9f987045a5c407f
+timeCreated: 1518431154
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - isku: {fileID: 21300000, guid: eca1481f2bec9bd438d99d2b86852af1, type: 3}
+  - TESTIHAHMO: {fileID: 21300000, guid: ccdb44a5422a2d94f8f4b3a52fbb88aa, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
