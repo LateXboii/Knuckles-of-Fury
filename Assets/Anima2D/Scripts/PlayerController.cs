@@ -5,12 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     private bool attacking = false;
-    public float walkSpeed = 10F;
+    public float walkSpeed = 5F;
     public float runSpeed = 18F;
     private bool facingright = false;
-    private bool running = false;
     public float health;
     Animator anim;
+   
     Rigidbody2D rigidbody2D;
 
     
@@ -25,7 +25,8 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate()
     {
-        float speed;
+
+        float speed = 0;
         float horizontal = Input.GetAxis("Horizontal");
          Flip(horizontal);
 
@@ -36,51 +37,30 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 speed = runSpeed;
-                anim.SetBool("Idle", false);
-                anim.SetBool("Walking", false);
-                anim.SetBool("Running", true);
+                
             }
             else if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 speed = walkSpeed;
-                anim.SetBool("Running", false);
-                anim.SetBool("Walking", true);
+                
             }
             else
             {
                 speed = walkSpeed;
-                anim.SetBool("Idle", false);
-                anim.SetBool("Walking", true);
             }
 
             PlayerMovement(horizontal,speed);
           
         }
-        else if(Input.GetKey(KeyCode.LeftShift))
+
+        else if (horizontal == 0F)
         {
-            if (horizontal < 0F)
-            {
-                speed = runSpeed;
-                anim.SetBool("Idle", false);
-                anim.SetBool("Running", true);
-                PlayerMovement(horizontal, speed);
-            }
-            else
-            {
-                anim.SetBool("Running", false);
-                anim.SetBool("Idle", true);
-            }
-        }
-        else if (horizontal == 0)
-        {
-            anim.SetBool("Walking", false);
-            anim.SetBool("Running", false);
-            anim.SetBool("Idle", true);
+            speed = 0;
         }
 
-        
+        Debug.Log(speed);
         //Debug.Log(horizontal);
-        anim.SetFloat("Speed", Mathf.Abs(horizontal));
+        anim.SetFloat("Speed", speed);
         
         
 
@@ -96,7 +76,7 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            anim.SetBool("Kicking", true);
+      
             Debug.Log("Potkitaan");
             attacking = true;
 
@@ -105,11 +85,11 @@ public class PlayerController : MonoBehaviour {
         
     }
 
-    void OnTriggerEnter2D(Collider2D coll)
+    void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Enemy")
         {
-            Debug.Log("Trigger tuli");
+            Debug.Log("Collision tuli");
         }
     }
 
@@ -146,8 +126,6 @@ public class PlayerController : MonoBehaviour {
     void AnimationPlayed()
     {
         anim.SetBool("Hitting", false);
-        anim.SetBool("Kicking", false);
-        anim.SetBool("Running", false);
     }
 
    
