@@ -1,0 +1,230 @@
+fileFormatVersion: 2
+guid: e6b523a864540e846a4c45db642afda2
+timeCreated: 1520238279
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: "nekok\xE4p\xE4l\xE4_oikea"
+    21300002: "nekok\xE4p\xE4l\xE4_vasen"
+    21300004: nekokeho
+    21300006: "nekop\xE4\xE4_normi"
+    21300008: "nekop\xE4\xE4_viha"
+    21300010: nekoraaja_oikea
+    21300012: nekoraaja_vasen
+    21300014: "nekosilm\xE4_normi"
+    21300016: "nekosilm\xE4_viha"
+    21300018: "nekoh\xE4nt\xE4_1"
+    21300020: "nekoh\xE4nt\xE4_2"
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "nekok\xE4p\xE4l\xE4_oikea"
+      rect:
+        serializedVersion: 2
+        x: 10.572236
+        y: 681.8816
+        width: 134.4756
+        height: 315.19623
+      alignment: 9
+      pivot: {x: 0.50513077, y: 0.4921328}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "nekok\xE4p\xE4l\xE4_vasen"
+      rect:
+        serializedVersion: 2
+        x: 228.44377
+        y: 679.0496
+        width: 106.43266
+        height: 333.38214
+      alignment: 9
+      pivot: {x: 0.48910016, y: 0.4872798}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: nekokeho
+      rect:
+        serializedVersion: 2
+        x: 408.3091
+        y: 589.9523
+        width: 254.37479
+        height: 416.97998
+      alignment: 9
+      pivot: {x: 0.51377296, y: 0.48934656}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "nekop\xE4\xE4_normi"
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 679.9214
+        width: 312.22125
+        height: 344.0786
+      alignment: 9
+      pivot: {x: 0.5012471, y: 0.5001142}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "nekop\xE4\xE4_viha"
+      rect:
+        serializedVersion: 2
+        x: 691.74677
+        y: 359.476
+        width: 332.25323
+        height: 324.29773
+      alignment: 9
+      pivot: {x: 0.4943616, y: 0.49498954}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: nekoraaja_oikea
+      rect:
+        serializedVersion: 2
+        x: 764.32715
+        y: 17.163948
+        width: 254.03064
+        height: 336.15582
+      alignment: 9
+      pivot: {x: 0.51046145, y: 0.50374275}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: nekoraaja_vasen
+      rect:
+        serializedVersion: 2
+        x: 494.4867
+        y: 3.947053
+        width: 161.4159
+        height: 371.15106
+      alignment: 9
+      pivot: {x: 0.5111845, y: 0.498592}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "nekosilm\xE4_normi"
+      rect:
+        serializedVersion: 2
+        x: 56.090958
+        y: 569.964
+        width: 135.52724
+        height: 88.1814
+      alignment: 9
+      pivot: {x: 0.5232088, y: 0.5107201}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "nekosilm\xE4_viha"
+      rect:
+        serializedVersion: 2
+        x: 55.16767
+        y: 462.5619
+        width: 143.83234
+        height: 103.09686
+      alignment: 9
+      pivot: {x: 0.49246457, y: 0.4698311}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "nekoh\xE4nt\xE4_1"
+      rect:
+        serializedVersion: 2
+        x: 20.0545
+        y: 237.50632
+        width: 402.83636
+        height: 193.87683
+      alignment: 9
+      pivot: {x: 0.5050326, y: 0.50802195}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "nekoh\xE4nt\xE4_2"
+      rect:
+        serializedVersion: 2
+        x: 18.771729
+        y: 24.348955
+        width: 400.99902
+        height: 196.5049
+      alignment: 9
+      pivot: {x: 0.49682984, y: 0.5071174}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 99569528774126
+  assetBundleName: 
+  assetBundleVariant: 
