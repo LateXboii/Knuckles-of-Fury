@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour {
 
         float speed = 0;
         float horizontal = Input.GetAxis("Horizontal");
-         Flip(horizontal);
+        Flip(horizontal);
 
 
         if (horizontal != 0F)
