@@ -5,20 +5,18 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     private bool attacking = false;
-    public float walkSpeed = 5F;
-    public float runSpeed = 18F;
+    public float walkSpeed;
+    public float runSpeed;
     private bool facingright = false;
     public float health;
+    bool isTouchingGround;
     Animator anim;
-   
     Rigidbody2D rigidbody2D;
-
-    
 
     // Update is called once per frame
     void Start()
     {
-        
+         
         anim = GetComponent<Animator>();
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
@@ -37,11 +35,13 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 speed = runSpeed;
+                walkSpeed = 0;
                 
             }
             else if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 speed = walkSpeed;
+               
                 
             }
             else
@@ -74,11 +74,15 @@ public class PlayerController : MonoBehaviour {
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z ))
         {
       
             Debug.Log("Potkitaan");
             attacking = true;
+            isTouchingGround = false;
+            
+
+            anim.SetBool("Kicking", true);
 
         }
 
@@ -126,6 +130,7 @@ public class PlayerController : MonoBehaviour {
     void AnimationPlayed()
     {
         anim.SetBool("Hitting", false);
+        anim.SetBool("Kicking", false);
     }
 
    
