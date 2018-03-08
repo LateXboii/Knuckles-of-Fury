@@ -10,7 +10,7 @@ public class EnemyScript : MonoBehaviour {
     public int damage;
     Animator anim;
     public float moveSpeed;
-    private float distanceToPlayer;
+  
     
 
 	// Use this for initialization
@@ -22,7 +22,7 @@ public class EnemyScript : MonoBehaviour {
         anim = GetComponent<Animator>();
         myTransform = GetComponent<Transform>();
 
-
+        
 
     }
 
@@ -30,21 +30,7 @@ public class EnemyScript : MonoBehaviour {
     void Update()
     {
 
-        float distance = Vector2.Distance(target.position, transform.position);
-        Debug.Log(distance);
-        if(distance < 4.0F)
-        {
-            anim.SetBool("walk", false);
-            anim.SetBool("lyonti", true);
-
-        }
-        else if (distance < 15.0f )
-        {
-            myTransform.position += myTransform.right * -moveSpeed * Time.deltaTime;
-            anim.SetBool("walk", true);
-        }
-
-         
+        Chase();
 
     }
     void OnCollisionEnter2D(Collision2D col)
@@ -55,9 +41,10 @@ public class EnemyScript : MonoBehaviour {
         }
     }
 
-    void KnockedOut()
+    void Chase()
     {
-
+        float movementDistance = moveSpeed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, target.position, movementDistance);
     }
 
     private void Attack()
@@ -67,4 +54,6 @@ public class EnemyScript : MonoBehaviour {
        
        
     }
+
+
 }
