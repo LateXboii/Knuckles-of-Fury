@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    private bool attacking = false;
+    
     public float walkSpeed;
     public float runSpeed;
     private bool facingright = false;
     public float health;
     bool isTouchingGround;
+    bool isAttacking;
     Animator anim;
     Rigidbody2D rigidbody2D;
 
@@ -35,7 +36,6 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 speed = runSpeed;
-                walkSpeed = 0;
                 
             }
             else if (Input.GetKeyUp(KeyCode.LeftShift))
@@ -61,15 +61,13 @@ public class PlayerController : MonoBehaviour {
         Debug.Log(speed);
         //Debug.Log(horizontal);
         anim.SetFloat("Speed", speed);
-        
-        
-
+       
 
         if (Input.GetKeyDown(KeyCode.A))
         {
-            anim.SetBool("Hitting", true);
+            isAttacking = true;
             Debug.Log("Hyökätään");
-            attacking = true;
+            anim.SetBool("Hitting", true);
 
         }
 
@@ -78,10 +76,7 @@ public class PlayerController : MonoBehaviour {
         {
       
             Debug.Log("Potkitaan");
-            attacking = true;
             isTouchingGround = false;
-            
-
             anim.SetBool("Kicking", true);
 
         }
@@ -130,7 +125,7 @@ public class PlayerController : MonoBehaviour {
     void AnimationPlayed()
     {
         anim.SetBool("Hitting", false);
-        anim.SetBool("Kicking", false);
+        
     }
 
    
