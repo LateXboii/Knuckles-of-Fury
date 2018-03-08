@@ -37,8 +37,10 @@ public class EnemyScript : MonoBehaviour {
     {
        if(col.gameObject.tag == "Player")
         {
-            //Distance
+            //Dis
         }
+
+       
     }
 
     void Chase()
