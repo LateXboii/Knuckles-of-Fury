@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour {
 
         float speed = 0;
         float horizontal = Input.GetAxis("Horizontal");
+        Debug.Log("Horizontal " + horizontal);
         Flip(horizontal);
 
 
@@ -58,7 +59,7 @@ public class PlayerController : MonoBehaviour {
             speed = 0;
         }
 
-        Debug.Log(speed);
+        
         //Debug.Log(horizontal);
         anim.SetFloat("Speed", speed);
        
@@ -118,7 +119,7 @@ public class PlayerController : MonoBehaviour {
     {
         transform.Translate(Vector3.right * (speed * direction) * Time.deltaTime);
         //rigidbody2D.AddForce(new Vector2(direction * maxSpeed, 0), ForceMode2D.Force);
-        Debug.Log(speed);
+        
   
 
     }
