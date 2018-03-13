@@ -84,6 +84,7 @@ public class EnemyScript : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D col)
     {
        if(col.gameObject.tag == "Player") {
+            Debug.Log("Attack");
             Attack();
         }
     }

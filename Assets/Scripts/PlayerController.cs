@@ -9,8 +9,8 @@ public class PlayerController : MonoBehaviour {
     public float runSpeed;
     private bool facingright = false;
     public float health;
-    bool isTouchingGround;
     bool isAttacking;
+    public bool grounded = false;
     Animator anim;
     Rigidbody2D rigidbody2D;
 
@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour {
          
         anim = GetComponent<Animator>();
         rigidbody2D = GetComponent<Rigidbody2D>();
+        Debug.Log("Parent transform: " + transform.position);
+        ResetChildPositions();
+      
     }
 
     void FixedUpdate()
@@ -73,11 +76,11 @@ public class PlayerController : MonoBehaviour {
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Z ))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
       
             Debug.Log("Potkitaan");
-            isTouchingGround = false;
+            isAttacking = true;
             anim.SetBool("Kicking", true);
 
         }
@@ -126,7 +129,20 @@ public class PlayerController : MonoBehaviour {
     void AnimationPlayed()
     {
         anim.SetBool("Hitting", false);
-        
+        anim.SetBool("Kicking", false);
+    }
+
+    void ResetChildPositions()
+    {
+        int childs = transform.childCount;
+
+        for(int i=0; i<childs; i++)
+        {
+            if(transform.GetChild(i).IsChildOf(transform))
+            {
+                transform.GetChild(i).position = transform.position;
+            }
+        }
     }
 
    
