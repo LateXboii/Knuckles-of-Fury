@@ -1,0 +1,188 @@
+fileFormatVersion: 2
+guid: 65f45cfdbf2e3ab4fb9205d5703dcf57
+timeCreated: 1521113875
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: enemihead
+    21300002: enemihand_right
+    21300004: enemi_eye
+    21300006: enemi_tail
+    21300008: enemihand_left
+    21300010: enemileg_right
+    21300012: enemileg_left
+    21300014: enemi_bode
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 1024
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: enemihead
+      rect:
+        serializedVersion: 2
+        x: 12.808199
+        y: 651.3557
+        width: 422.00742
+        height: 372.6443
+      alignment: 9
+      pivot: {x: 0.47437984, y: 0.4968392}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemihand_right
+      rect:
+        serializedVersion: 2
+        x: 23.878197
+        y: 257.25278
+        width: 216.4111
+        height: 342.90305
+      alignment: 9
+      pivot: {x: 0.45802552, y: 0.52856696}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemi_eye
+      rect:
+        serializedVersion: 2
+        x: 296.21375
+        y: 500
+        width: 177.79059
+        height: 130.9956
+      alignment: 9
+      pivot: {x: 0.5078236, y: 0.5076506}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemi_tail
+      rect:
+        serializedVersion: 2
+        x: 489.0091
+        y: 420.23923
+        width: 321.706
+        height: 590.1161
+      alignment: 9
+      pivot: {x: 0.49265763, y: 0.5113583}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemihand_left
+      rect:
+        serializedVersion: 2
+        x: 813.35443
+        y: 448.1098
+        width: 210.58221
+        height: 341.1731
+      alignment: 9
+      pivot: {x: 0.50168324, y: 0.5214075}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemileg_right
+      rect:
+        serializedVersion: 2
+        x: 173.08398
+        y: 12.424543
+        width: 225.87952
+        height: 332.99164
+      alignment: 9
+      pivot: {x: 0.4910406, y: 0.5347746}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemileg_left
+      rect:
+        serializedVersion: 2
+        x: 433.7129
+        y: 10.412533
+        width: 201.47168
+        height: 385.93735
+      alignment: 9
+      pivot: {x: 0.55237097, y: 0.49901226}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: enemi_bode
+      rect:
+        serializedVersion: 2
+        x: 692.80347
+        y: 0.51224947
+        width: 315.99298
+        height: 382.31702
+      alignment: 9
+      pivot: {x: 0.5037977, y: 0.50478464}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 99687717767834
+  assetBundleName: 
+  assetBundleVariant: 
