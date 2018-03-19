@@ -1,0 +1,188 @@
+fileFormatVersion: 2
+guid: d5c5f901264b7294e8c5008ad7b8c298
+timeCreated: 1521459368
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: dogenemi_head
+    21300002: dogenemi_bode
+    21300004: dogenemi_eye
+    21300006: dogenemi_leg_right
+    21300008: dogenemi_leg_left
+    21300010: dogenemi_arm_left
+    21300012: dogenemi_tail
+    21300014: dogenemi_arm_right
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 1024
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dogenemi_head
+      rect:
+        serializedVersion: 2
+        x: 42.367226
+        y: 730.1974
+        width: 338.67236
+        height: 293.8026
+      alignment: 9
+      pivot: {x: 0.43886894, y: 0.49966407}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dogenemi_bode
+      rect:
+        serializedVersion: 2
+        x: 31.60643
+        y: 245.34827
+        width: 263.27063
+        height: 452.74823
+      alignment: 9
+      pivot: {x: 0.4933842, y: 0.49509132}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dogenemi_eye
+      rect:
+        serializedVersion: 2
+        x: 409.09955
+        y: 658.4946
+        width: 124.460144
+        height: 66.87421
+      alignment: 9
+      pivot: {x: 0.4973516, y: 0.52345103}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dogenemi_leg_right
+      rect:
+        serializedVersion: 2
+        x: 280.91925
+        y: 19.845844
+        width: 223.55884
+        height: 341.06906
+      alignment: 9
+      pivot: {x: 0.51476717, y: 0.5062147}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dogenemi_leg_left
+      rect:
+        serializedVersion: 2
+        x: 621.83685
+        y: 15.47032
+        width: 191.21478
+        height: 378.13135
+      alignment: 9
+      pivot: {x: 0.5055213, y: 0.50122714}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dogenemi_arm_left
+      rect:
+        serializedVersion: 2
+        x: 835.6121
+        y: 188.67973
+        width: 168.59644
+        height: 395.41394
+      alignment: 9
+      pivot: {x: 0.5479824, y: 0.49775752}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dogenemi_tail
+      rect:
+        serializedVersion: 2
+        x: 859.95135
+        y: 896.8753
+        width: 95.04913
+        height: 90.93732
+      alignment: 9
+      pivot: {x: 0.51603466, y: 0.52370906}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dogenemi_arm_right
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 503
+        width: 188
+        height: 380.19653
+      alignment: 9
+      pivot: {x: 0.5053191, y: 0.48527533}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 99710360333447
+  assetBundleName: 
+  assetBundleVariant: 
