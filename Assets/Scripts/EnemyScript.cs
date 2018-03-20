@@ -110,21 +110,26 @@ public class EnemyScript : MonoBehaviour {
 
 
         if (distanceFromTarget > 9.0f) {
-            anim.SetBool("Enemi_walk", true);
+            anim.SetBool("EnemyWalk", true);
             moveSpeed = 20;
             
         }
 
         if (distanceFromTarget < 9.0f) {
-            anim.SetBool("Enemi_walk", false);
+            anim.SetBool("EnemyWalk", false);
             moveSpeed = 0;
+            Attack();
         }
     }
 
     void Die()
     {
+<<<<<<< HEAD
         if (playerObject != null)
             playah.Die();
+=======
+        anim.SetBool("EnemyPunch", true);
+>>>>>>> 584b55a901b18acc2aa1117ccae2c8fa90d7a7e8
     }
 
     
