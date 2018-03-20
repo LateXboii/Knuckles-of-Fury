@@ -1,29 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
     
     public float walkSpeed;
     public float runSpeed;
+    float maxHealth;
+    float curHealth;
     public float jumpKickPowah;
     private bool facingright = false;
-    public float health;
-    int jumpKickCount;
     bool isAttacking;
     bool isTouchingGround;
+    public Slider healthBar;
     Animator anim;
     Rigidbody2D rigidbody2D;
 
     // Update is called once per frame
     void Start()
     {
-         
+        maxHealth = 20F;
         anim = GetComponent<Animator>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         Debug.Log("Parent transform: " + transform.position);
         //ResetChildPositions();
+        curHealth = maxHealth;
+
+        healthBar.value = CalculateHealth();
       
     }
 
@@ -32,7 +37,6 @@ public class PlayerController : MonoBehaviour {
 
         float speed = 0;
         float horizontal = Input.GetAxis("Horizontal");
-        Debug.Log("Horizontal " + horizontal);
         Flip(horizontal);
 
 
@@ -92,6 +96,11 @@ public class PlayerController : MonoBehaviour {
 
         }
 
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            TakeSomeDamage(10);
+        }
+
         
     }
 
@@ -110,13 +119,24 @@ public class PlayerController : MonoBehaviour {
    
     }
 
-    void TakeSomeDamage(int damage)
+    float CalculateHealth()
     {
-        health -= damage;
-        if (health <= 0)
-        {
-            Debug.Log("Dead)");
+        return curHealth / maxHealth;
+
+    }
+
+
+    public void TakeSomeDamage(int damage)
+    {
+
+        if(curHealth <= 0)
+        {          
+            Die();
         }
+
+        curHealth -= damage;
+
+        healthBar.value = CalculateHealth();
     }
 
     private void Flip(float horizontal)
@@ -160,10 +180,14 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void ResetJumpKickCount()
+    void Die()
     {
-        jumpKickCount = 0;
+        curHealth = 0;
+        Debug.Log("LOL kuolit!");
+
     }
+
+
 
 
     
