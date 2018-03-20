@@ -10,9 +10,6 @@ public class EnemyScript : MonoBehaviour {
     public int damage;
     Animator anim;
     public float moveSpeed;
-    private bool punch = false;
-    public float punchRate = 0f;
-    private float punchTimeStamp = 0f;
     public float distanceFromTarget;
     public GameObject playerObject;
     public Transform groundCheck;
@@ -109,10 +106,7 @@ public class EnemyScript : MonoBehaviour {
 
 void Attack()
     {
-        if (!punch)
-        {
         
-        }
     }
 
     public void Fleeing()
