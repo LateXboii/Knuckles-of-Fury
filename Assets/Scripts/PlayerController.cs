@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Start()
     {
-        maxHealth = 20F;
+        maxHealth = 100F;
         anim = GetComponent<Animator>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         Debug.Log("Parent transform: " + transform.position);
@@ -95,12 +95,6 @@ public class PlayerController : MonoBehaviour {
 
 
         }
-
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            TakeSomeDamage(10);
-        }
-
         
     }
 
@@ -126,7 +120,7 @@ public class PlayerController : MonoBehaviour {
     }
 
 
-    public void TakeSomeDamage(int damage)
+    public void TakeSomeDamage(float damage)
     {
 
         if(curHealth <= 0)
@@ -134,6 +128,7 @@ public class PlayerController : MonoBehaviour {
             Die();
         }
 
+        
         curHealth -= damage;
 
         healthBar.value = CalculateHealth();
@@ -180,10 +175,14 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void Die()
+    public void Die()
     {
         curHealth = 0;
-        Debug.Log("LOL kuolit!");
+
+        Debug.Log("Kuolit!");
+
+        Destroy(gameObject);
+
 
     }
 

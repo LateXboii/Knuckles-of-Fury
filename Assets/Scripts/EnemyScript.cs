@@ -6,8 +6,8 @@ public class EnemyScript : MonoBehaviour {
     
     public Transform target;
     Transform myTransform;
-    int direction;
-    public int damage;
+    PlayerController playah;
+    public float damage;
     Animator anim;
     public float moveSpeed;
     public float distanceFromTarget;
@@ -18,18 +18,23 @@ public class EnemyScript : MonoBehaviour {
     private bool grounded;
     bool hasSpottedPlayer;
     float reactionTime;
-    private bool idlespeed;
 
-    float healthRegeneration;
-    float healthRegenTimer;
+    float maxHealth;
+    float curHealth;
 
-    int hp;
+    //float healthRegeneration;
+    //float healthRegenTimer;
+
+    
 
     void Start()
     {
-        hp = 10;
-        healthRegeneration = 2;
-        healthRegenTimer = 0;
+        maxHealth = 100F;
+        curHealth = maxHealth;
+       
+
+        //healthRegeneration = 2;
+        //healthRegenTimer = 0;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         anim = GetComponent<Animator>();
         myTransform = GetComponent<Transform>();
@@ -43,8 +48,18 @@ public class EnemyScript : MonoBehaviour {
 
     void Update()
     {
-        distanceFromTarget = Vector3.Distance(playerObject.transform.position, gameObject.transform.position);
-        Idle();
+        if (playerObject != null)
+        {
+            distanceFromTarget = Vector3.Distance(playerObject.transform.position, gameObject.transform.position);
+            Idle();
+
+        }
+        else if (playerObject == null)
+        {
+            Die();
+            
+        }
+        
         if (grounded & hasSpottedPlayer)
         {
             Chase();
@@ -77,45 +92,55 @@ public class EnemyScript : MonoBehaviour {
 
     }
 
-
-    void OnCollisionEnter2D(Collision2D col)
+    void OnCollisionEnter2D(Collision2D coll)
     {
-       if(col.gameObject.tag == "Player") {
-            Debug.Log("Attack");
-            Attack();
+        if(coll.gameObject.tag == "Player")
+        {
+            damage = Random.Range(10F, 30F);
+            coll.gameObject.GetComponent<PlayerController>().TakeSomeDamage(damage);
         }
     }
 
+
     void Chase()
     {
-            float movementDistance = moveSpeed * Time.deltaTime;
+        float movementDistance = moveSpeed * Time.deltaTime;
+        if(target != null)
             transform.position = Vector3.MoveTowards(transform.position, target.position, movementDistance);
 
 
         if (distanceFromTarget > 9.0f) {
-            anim.SetBool("Enemi_walk", true);
+            anim.SetBool("EnemyWalk", true);
             moveSpeed = 20;
             
         }
 
         if (distanceFromTarget < 9.0f) {
-            anim.SetBool("Enemi_walk", false);
+            anim.SetBool("EnemyWalk", false);
             moveSpeed = 0;
+            Attack();
         }
     }
 
-void Attack()
+    void Die()
     {
-        
+<<<<<<< HEAD
+        if (playerObject != null)
+            playah.Die();
+=======
+        anim.SetBool("EnemyPunch", true);
+>>>>>>> 584b55a901b18acc2aa1117ccae2c8fa90d7a7e8
     }
 
-    public void Fleeing()
+    
+     
+    /*public void Fleeing()
     {
         Vector3 awayFromPlayer = transform.position - playerObject.transform.position;
         awayFromPlayer.Normalize();
 
         transform.LookAt(transform.position + awayFromPlayer);
-        if (hp < 5)
+        /*if (curHealth < 5)
         {
             float dampening = 30;
             transform.position = new Vector3(transform.position.x + awayFromPlayer.x / dampening,
@@ -134,5 +159,6 @@ void Attack()
         {
             Chase();
         }
-    }
+    }*/
+    
 }
