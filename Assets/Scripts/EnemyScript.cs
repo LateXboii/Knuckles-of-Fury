@@ -124,16 +124,19 @@ public class EnemyScript : MonoBehaviour {
 
     void Die()
     {
-<<<<<<< HEAD
         if (playerObject != null)
             playah.Die();
-=======
+
         anim.SetBool("EnemyPunch", true);
->>>>>>> 584b55a901b18acc2aa1117ccae2c8fa90d7a7e8
     }
 
-    
-     
+    void Attack()
+    {
+        int r = (int)Random.Range(1f, 3f);
+
+        anim.SetInteger("RandomATK", r);
+    }
+
     /*public void Fleeing()
     {
         Vector3 awayFromPlayer = transform.position - playerObject.transform.position;
@@ -160,5 +163,5 @@ public class EnemyScript : MonoBehaviour {
             Chase();
         }
     }*/
-    
+
 }
