@@ -139,6 +139,7 @@ public class EnemyScript : MonoBehaviour {
 
     void Die()
     {
+<<<<<<< HEAD
 
         if (playerObject != null)
             other.GetComponent<GameManager>().Die();
@@ -152,6 +153,21 @@ public class EnemyScript : MonoBehaviour {
     }
     
      
+=======
+        if (playerObject != null)
+            playah.Die();
+
+        anim.SetBool("EnemyPunch", true);
+    }
+
+    void Attack()
+    {
+        int r = (int)Random.Range(1f, 3f);
+
+        anim.SetInteger("RandomATK", r);
+    }
+
+>>>>>>> c18106ab7243023b705741827690393274418ae5
     /*public void Fleeing()
     {
         Vector3 awayFromPlayer = transform.position - playerObject.transform.position;
@@ -178,5 +194,5 @@ public class EnemyScript : MonoBehaviour {
             Chase();
         }
     }*/
-    
+
 }
