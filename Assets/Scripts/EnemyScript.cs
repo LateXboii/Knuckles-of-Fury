@@ -8,8 +8,8 @@ public class EnemyScript : MonoBehaviour {
     public Transform target;
     Transform myTransform;
     GameObject other;
-    GameObject Hand_R;
-    BoxCollider2D handCol;
+    //GameObject Hand_R;
+    //oxCollider2D handCol;
     public float damage;
     Animator anim;
     public float moveSpeed;
@@ -37,10 +37,8 @@ public class EnemyScript : MonoBehaviour {
         curHealth = maxHealth;
 
         other = GameObject.Find("GameManager");
-
-        Hand_R = GameObject.Find("Hand_R");
-        handCol = Hand_R.GetComponent<BoxCollider2D>();
-
+        //Hand_R = GameObject.Find("Hand_R");
+        //handCol = Hand_R.GetComponent<BoxCollider2D>();
         //healthRegeneration = 2;
         //healthRegenTimer = 0;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -102,12 +100,10 @@ public class EnemyScript : MonoBehaviour {
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        damage = Random.Range(30F, 40F);
-        if(collision.gameObject.CompareTag("Player"))
-        {
-            other.gameObject.GetComponent<GameManager>().TakeSomeDamage(damage);
-        }
-        
+       
+           damage = Random.Range(30F, 40F);
+           other.gameObject.GetComponent<GameManager>().TakeSomeDamage(damage);
+
     }
 
 
@@ -120,7 +116,7 @@ public class EnemyScript : MonoBehaviour {
 
 
         if (distanceFromTarget > 8.0f) {
-            handCol.enabled = false;
+            //handCol.enabled = false;
             anim.SetBool("EnemyPunch", false);
             anim.SetBool("EnemyWalk", true);
             moveSpeed = 20;
@@ -130,16 +126,17 @@ public class EnemyScript : MonoBehaviour {
         }
 
         if (distanceFromTarget < 8.0f) {
-            handCol.enabled = true;
-            anim.SetBool("EnemyWalk", false);
-            moveSpeed = 0;
+            //handCol.enabled = true;
             anim.SetBool("EnemyPunch", true);
+            moveSpeed = 0;
+            anim.SetBool("EnemyWalk", false);
+
         }
     }
 
     void Die()
     {
-<<<<<<< HEAD
+
 
         if (playerObject != null)
             other.GetComponent<GameManager>().Die();
@@ -152,13 +149,7 @@ public class EnemyScript : MonoBehaviour {
         anim.SetBool("EnemyPunch", false);
     }
     
-     
-=======
-        if (playerObject != null)
-            playah.Die();
-
-        anim.SetBool("EnemyPunch", true);
-    }
+ 
 
     void Attack()
     {
@@ -167,7 +158,6 @@ public class EnemyScript : MonoBehaviour {
         anim.SetInteger("RandomATK", r);
     }
 
->>>>>>> c18106ab7243023b705741827690393274418ae5
     /*public void Fleeing()
     {
         Vector3 awayFromPlayer = transform.position - playerObject.transform.position;

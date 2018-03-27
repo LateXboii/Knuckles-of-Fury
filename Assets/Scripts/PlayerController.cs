@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
-    
+    public GameManager gm;
     public float walkSpeed;
     public float runSpeed;
     public float jumpKickPowah;
@@ -16,14 +16,14 @@ public class PlayerController : MonoBehaviour {
    
 
     Animator anim;
-    Rigidbody2D rigidbody2D;
+    Rigidbody2D rb2D;
 
     // Update is called once per frame
     void Start()
     {
-
+        
         anim = GetComponent<Animator>();
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        rb2D = GetComponent<Rigidbody2D>();
         Debug.Log("Parent transform: " + transform.position);
         //ResetChildPositions();
 
@@ -87,12 +87,18 @@ public class PlayerController : MonoBehaviour {
             Debug.Log("Potkitaan");
             isAttacking = true;
             anim.SetBool("Kicking", true);
-            rigidbody2D.AddForce(Vector2.up * jumpKickPowah, ForceMode2D.Impulse);
+            rb2D.AddForce(Vector2.up * jumpKickPowah, ForceMode2D.Impulse);
             isTouchingGround = false;
 
 
         }
-        
+
+ 
+    }
+
+    public void AddGm(GameManager gme)
+    {
+        gm = gme;
     }
 
     void OnCollisionEnter2D(Collision2D coll)
