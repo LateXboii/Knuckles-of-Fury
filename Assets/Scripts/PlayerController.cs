@@ -2,34 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
-    
+    public GameManager gm;
     public float walkSpeed;
     public float runSpeed;
-    float maxHealth;
-    float curHealth;
     public float jumpKickPowah;
     private bool facingright = false;
     bool isAttacking;
     bool isTouchingGround;
-    public Slider healthBar;
+   
+
     Animator anim;
-    Rigidbody2D rigidbody2D;
+    Rigidbody2D rb2D;
 
     // Update is called once per frame
     void Start()
     {
-        maxHealth = 100F;
+        
         anim = GetComponent<Animator>();
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        rb2D = GetComponent<Rigidbody2D>();
         Debug.Log("Parent transform: " + transform.position);
         //ResetChildPositions();
-        curHealth = maxHealth;
 
-        healthBar.value = CalculateHealth();
-      
     }
 
     void FixedUpdate()
@@ -90,12 +87,18 @@ public class PlayerController : MonoBehaviour {
             Debug.Log("Potkitaan");
             isAttacking = true;
             anim.SetBool("Kicking", true);
-            rigidbody2D.AddForce(Vector2.up * jumpKickPowah, ForceMode2D.Impulse);
+            rb2D.AddForce(Vector2.up * jumpKickPowah, ForceMode2D.Impulse);
             isTouchingGround = false;
 
 
         }
-        
+
+ 
+    }
+
+    public void AddGm(GameManager gme)
+    {
+        gm = gme;
     }
 
     void OnCollisionEnter2D(Collision2D coll)
@@ -113,26 +116,7 @@ public class PlayerController : MonoBehaviour {
    
     }
 
-    float CalculateHealth()
-    {
-        return curHealth / maxHealth;
 
-    }
-
-
-    public void TakeSomeDamage(float damage)
-    {
-
-        if(curHealth <= 0)
-        {          
-            Die();
-        }
-
-        
-        curHealth -= damage;
-
-        healthBar.value = CalculateHealth();
-    }
 
     private void Flip(float horizontal)
     {
@@ -175,16 +159,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    public void Die()
-    {
-        curHealth = 0;
-
-        Debug.Log("Kuolit!");
-
-        Destroy(gameObject);
-
-
-    }
+   
 
 
 

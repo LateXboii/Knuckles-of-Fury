@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyScript : MonoBehaviour {
     
     public Transform target;
     Transform myTransform;
-    PlayerController playah;
+    GameObject other;
+    //GameObject Hand_R;
+    //oxCollider2D handCol;
     public float damage;
     Animator anim;
     public float moveSpeed;
@@ -18,6 +21,7 @@ public class EnemyScript : MonoBehaviour {
     private bool grounded;
     bool hasSpottedPlayer;
     float reactionTime;
+    
 
     float maxHealth;
     float curHealth;
@@ -31,8 +35,10 @@ public class EnemyScript : MonoBehaviour {
     {
         maxHealth = 100F;
         curHealth = maxHealth;
-       
 
+        other = GameObject.Find("GameManager");
+        //Hand_R = GameObject.Find("Hand_R");
+        //handCol = Hand_R.GetComponent<BoxCollider2D>();
         //healthRegeneration = 2;
         //healthRegenTimer = 0;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -86,20 +92,20 @@ public class EnemyScript : MonoBehaviour {
             reactionTime = 50;
             Chase();
         }
-       /* {
-            reactionTime -= 1;
-        }*/
-
-    }
-
-    void OnCollisionEnter2D(Collision2D coll)
-    {
-        if(coll.gameObject.tag == "Player")
         {
-            damage = Random.Range(10F, 30F);
-            coll.gameObject.GetComponent<PlayerController>().TakeSomeDamage(damage);
+            reactionTime -= 1;
         }
+
     }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+       
+           damage = Random.Range(30F, 40F);
+           other.gameObject.GetComponent<GameManager>().TakeSomeDamage(damage);
+
+    }
+
 
 
     void Chase()
@@ -109,26 +115,41 @@ public class EnemyScript : MonoBehaviour {
             transform.position = Vector3.MoveTowards(transform.position, target.position, movementDistance);
 
 
-        if (distanceFromTarget > 9.0f) {
+        if (distanceFromTarget > 8.0f) {
+            //handCol.enabled = false;
+            anim.SetBool("EnemyPunch", false);
             anim.SetBool("EnemyWalk", true);
             moveSpeed = 20;
             
+            
+            
         }
 
-        if (distanceFromTarget < 9.0f) {
-            anim.SetBool("EnemyWalk", false);
+        if (distanceFromTarget < 8.0f) {
+            //handCol.enabled = true;
+            anim.SetBool("EnemyPunch", true);
             moveSpeed = 0;
-            Attack();
+            anim.SetBool("EnemyWalk", false);
+
         }
     }
 
     void Die()
     {
-        if (playerObject != null)
-            playah.Die();
 
-        anim.SetBool("EnemyPunch", true);
+
+        if (playerObject != null)
+            other.GetComponent<GameManager>().Die();
+
+        
     }
+
+    void AnimationsPlayed()
+    {
+        anim.SetBool("EnemyPunch", false);
+    }
+    
+ 
 
     void Attack()
     {
