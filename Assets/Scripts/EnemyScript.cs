@@ -8,8 +8,8 @@ public class EnemyScript : MonoBehaviour {
     public Transform target;
     Transform myTransform;
     GameObject other;
-    //GameObject Hand_R;
-    //oxCollider2D handCol;
+    GameObject hand_R;
+    BoxCollider2D handCol;
     public float damage;
     Animator anim;
     public float moveSpeed;
@@ -35,10 +35,12 @@ public class EnemyScript : MonoBehaviour {
     {
         maxHealth = 100F;
         curHealth = maxHealth;
+        
 
         other = GameObject.Find("GameManager");
-        //Hand_R = GameObject.Find("Hand_R");
-        //handCol = Hand_R.GetComponent<BoxCollider2D>();
+        hand_R = GameObject.Find("Hand_R");
+        handCol = hand_R.GetComponent<BoxCollider2D>() as BoxCollider2D;
+        //handCol.enabled = false;
         //healthRegeneration = 2;
         //healthRegenTimer = 0;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -116,45 +118,30 @@ public class EnemyScript : MonoBehaviour {
 
 
         if (distanceFromTarget > 8.0f) {
-            //handCol.enabled = false;
-            anim.SetBool("EnemyPunch", false);
+            
+            anim.SetInteger("RandomATK", 0);
             anim.SetBool("EnemyWalk", true);
             moveSpeed = 20;
-            
-            
-            
         }
 
         if (distanceFromTarget < 8.0f) {
-            //handCol.enabled = true;
-            anim.SetBool("EnemyPunch", true);
-            moveSpeed = 0;
             anim.SetBool("EnemyWalk", false);
-
+            handCol.enabled = true;
+            anim.SetInteger("RandomATK", 1);
+            moveSpeed = 0;
         }
     }
 
     void Die()
     {
-
-
         if (playerObject != null)
             other.GetComponent<GameManager>().Die();
-
-        
     }
 
-    void AnimationsPlayed()
-    {
-        anim.SetBool("EnemyPunch", false);
-    }
-    
  
-
     void Attack()
     {
-        int r = (int)Random.Range(1f, 3f);
-
+        int r = (int)Random.Range(1, 3);
         anim.SetInteger("RandomATK", r);
     }
 
