@@ -6,14 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-    float maxHealth;
-    float curHealth;
+    public float maxHealth;
+    public float curHealth;
     public Slider healthBar;
+   
 
     // Use this for initialization
     void Start ()
     {
-        maxHealth = 100F;
+
+        maxHealth = 500F;
 
         curHealth = maxHealth;
 
@@ -24,10 +26,7 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-		if(Input.GetKeyDown(KeyCode.X))
-        {
-            TakeSomeDamage(30F);
-        }
+		
 	}
 
    void OnCollisionEnter2D(Collision2D coll)
@@ -52,6 +51,7 @@ public class GameManager : MonoBehaviour {
 
 
 
+
         curHealth -= damage;
 
         healthBar.value = CalculateHealth();
@@ -59,11 +59,10 @@ public class GameManager : MonoBehaviour {
 
     public void Die()
     {
-        
         curHealth = 0;
         SceneManager.LoadScene(0);
-        
-
 
     }
+
+
 }

@@ -39,7 +39,7 @@ public class EnemyScript : MonoBehaviour {
 
         other = GameObject.Find("GameManager");
         hand_R = GameObject.Find("Hand_R");
-        handCol = hand_R.GetComponent<BoxCollider2D>() as BoxCollider2D;
+        handCol = hand_R.GetComponent<BoxCollider2D>();
         //handCol.enabled = false;
         //healthRegeneration = 2;
         //healthRegenTimer = 0;
@@ -56,6 +56,7 @@ public class EnemyScript : MonoBehaviour {
 
     void Update()
     {
+        
         if (playerObject != null)
         {
             distanceFromTarget = Vector3.Distance(playerObject.transform.position, gameObject.transform.position);
@@ -102,9 +103,9 @@ public class EnemyScript : MonoBehaviour {
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-       
-           damage = Random.Range(30F, 40F);
-           other.gameObject.GetComponent<GameManager>().TakeSomeDamage(damage);
+
+            damage = 5F;
+            other.gameObject.GetComponent<GameManager>().TakeSomeDamage(damage);
 
     }
 
@@ -127,7 +128,12 @@ public class EnemyScript : MonoBehaviour {
         if (distanceFromTarget < 8.0f) {
             anim.SetBool("EnemyWalk", false);
             handCol.enabled = true;
-            anim.SetInteger("RandomATK", 1);
+            if(anim.GetInteger("RandomATK") == 0)
+            {
+                int r = (int)Random.Range(1, 3);
+                anim.SetInteger("RandomATK", r);
+            }
+            
             moveSpeed = 0;
         }
     }
@@ -144,6 +150,14 @@ public class EnemyScript : MonoBehaviour {
         int r = (int)Random.Range(1, 3);
         anim.SetInteger("RandomATK", r);
     }
+    void RandomATKNull()
+    { 
+        anim.SetInteger("RandomATK", 0);
+    }
+
+
+
+
 
     /*public void Fleeing()
     {

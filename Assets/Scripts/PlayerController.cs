@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Start()
     {
-        
+       
         anim = GetComponent<Animator>();
         rb2D = GetComponent<Rigidbody2D>();
         Debug.Log("Parent transform: " + transform.position);
@@ -110,8 +110,6 @@ public class PlayerController : MonoBehaviour {
         if (coll.gameObject.tag == "Ground")
         {
             isTouchingGround = true;
-      
-            
         }
    
     }
@@ -159,6 +157,11 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    public void Die()
+    {
+        SceneManager.LoadScene(0);
+        
+    }
    
 
 
