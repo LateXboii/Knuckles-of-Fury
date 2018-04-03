@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class EnemyScript : MonoBehaviour {
     
     public Transform target;
-    public int maxHealth;
-    public int curHealth;
+    public float maxHealth;
+    public float curHealth;
 
     public CharacterHealth chrhlth;
     Transform myTransform;
@@ -17,6 +17,7 @@ public class EnemyScript : MonoBehaviour {
     BoxCollider2D handCol;
     BoxCollider2D footCol;
     Animator anim;
+    public Slider enemyhealthbar;
     private bool isDead = false;
     public float moveSpeed;
     public float distanceFromTarget;
@@ -27,6 +28,7 @@ public class EnemyScript : MonoBehaviour {
     private bool grounded;
     bool hasSpottedPlayer;
     float reactionTime;
+
    
 
     
@@ -40,6 +42,8 @@ public class EnemyScript : MonoBehaviour {
     {
         maxHealth = 300;
         curHealth = maxHealth;
+
+        enemyhealthbar.value = CalculateHealth();
 
         other = GameObject.Find("CharacterHealth");
         hand_R = GameObject.Find("Hand_R");
@@ -153,15 +157,16 @@ public class EnemyScript : MonoBehaviour {
         anim.Play("EnemyIdle");
     }
 
-    public void TookDamage(int damage)
+    public void TookDamage(float damage)
     {
-        if(curHealth <= 0)
+        if(curHealth <= 0F)
         {
             Disableenemy();
         }
 
         curHealth -= damage;
 
+        enemyhealthbar.value = CalculateHealth();
 
 
     }
@@ -172,9 +177,9 @@ public class EnemyScript : MonoBehaviour {
 
     }
 
-    void CalculateHealth()
+    float CalculateHealth()
     {
-        
+        return curHealth / maxHealth;
     }
 
 
