@@ -22,17 +22,18 @@ public class EnemyDamageControl : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Enemy"))
-                {
+        {
             if (this.gameObject.tag == "Arm_left")
             {
                 damage = 20;
                 enmi_script.TookDamage(damage);
             }
-        }
-        if (this.gameObject.tag == "Paw_left")
-        {
-            damage = 20;
-            enmi_script.TookDamage(damage);
+
+            if (this.gameObject.tag == "Paw_left")
+            {
+                damage = 20;
+                enmi_script.TookDamage(damage);
+            }
         }
     }
 }
