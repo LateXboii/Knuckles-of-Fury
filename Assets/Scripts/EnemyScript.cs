@@ -9,7 +9,7 @@ public class EnemyScript : MonoBehaviour {
     public float maxHealth;
     public float curHealth;
 
-    public CharacterHealth chrhlth;
+    
     Transform myTransform;
     GameObject other;
     GameObject hand_R;

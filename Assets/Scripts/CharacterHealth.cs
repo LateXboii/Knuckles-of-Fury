@@ -16,7 +16,7 @@ public class CharacterHealth : MonoBehaviour {
     void Start()
     {
 
-        maxHealth = 1000F;
+        maxHealth = 10000F;
 
         curHealth = maxHealth;
 
