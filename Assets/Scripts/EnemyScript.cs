@@ -28,6 +28,7 @@ public class EnemyScript : MonoBehaviour {
     private bool grounded;
     bool hasSpottedPlayer;
     float reactionTime;
+    float attacTimer = 0f;
 
    
 
@@ -161,7 +162,7 @@ public class EnemyScript : MonoBehaviour {
     {
         if(curHealth <= 0F)
         {
-            Disableenemy();
+            
         }
 
         curHealth -= damage;
@@ -171,7 +172,7 @@ public class EnemyScript : MonoBehaviour {
 
     }
 
-    public void Disableenemy()
+    void Flip()
     {
         
 

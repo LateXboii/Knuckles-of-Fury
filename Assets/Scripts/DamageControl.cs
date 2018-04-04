@@ -28,12 +28,12 @@ public class DamageControl : MonoBehaviour
             {
             if (this.gameObject.tag == "Hand_R")
             {
-                damage = 15F;
+                damage = 100F;
                 chr_script.TakeSomeDamage(damage);
             }
             if(this.gameObject.tag == "Foot_R")
             {
-                damage = 30F;
+                damage = 300F;
                 chr_script.TakeSomeDamage(damage);
             }
         }
