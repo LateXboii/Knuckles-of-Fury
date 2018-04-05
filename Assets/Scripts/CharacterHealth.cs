@@ -4,36 +4,36 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour {
 
-    float maxHealth;
-    float curHealth;
+public class CharacterHealth : MonoBehaviour {
+
+     float maxHealth;
+     float curHealth;
     public Slider healthBar;
 
+    
     // Use this for initialization
-    void Start ()
+    void Start()
     {
-        maxHealth = 100F;
+
+        maxHealth = 1000F;
 
         curHealth = maxHealth;
 
         healthBar.value = CalculateHealth();
 
     }
-	
-	// Update is called once per frame
-	void FixedUpdate ()
-    {
-		if(Input.GetKeyDown(KeyCode.X))
-        {
-            TakeSomeDamage(30F);
-        }
-	}
 
-   void OnCollisionEnter2D(Collision2D coll)
+    // Update is called once per frame
+    void FixedUpdate()
     {
-        
-        
+
+    }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+
+
     }
 
     float CalculateHealth()
@@ -42,15 +42,13 @@ public class GameManager : MonoBehaviour {
 
     }
 
-    public void TakeSomeDamage(float damage)
+   public void TakeSomeDamage(float damage)
     {
 
         if (curHealth <= 0F)
         {
             Die();
         }
-
-
 
         curHealth -= damage;
 
@@ -59,11 +57,10 @@ public class GameManager : MonoBehaviour {
 
     public void Die()
     {
-        
         curHealth = 0;
         SceneManager.LoadScene(0);
-        
-
 
     }
-}
+
+  }
+

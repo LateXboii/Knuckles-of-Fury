@@ -6,12 +6,19 @@ using UnityEngine.UI;
 public class EnemyScript : MonoBehaviour {
     
     public Transform target;
+    public float maxHealth;
+    public float curHealth;
+
+    
     Transform myTransform;
     GameObject other;
     GameObject hand_R;
+    GameObject foot_R;
     BoxCollider2D handCol;
-    public float damage;
+    BoxCollider2D footCol;
     Animator anim;
+    public Slider enemyhealthbar;
+    private bool isDead = false;
     public float moveSpeed;
     public float distanceFromTarget;
     public GameObject playerObject;
@@ -21,11 +28,12 @@ public class EnemyScript : MonoBehaviour {
     private bool grounded;
     bool hasSpottedPlayer;
     float reactionTime;
+    float attacTimer = 0f;
+
+   
+
     
-
-    float maxHealth;
-    float curHealth;
-
+ 
     //float healthRegeneration;
     //float healthRegenTimer;
 
@@ -33,13 +41,16 @@ public class EnemyScript : MonoBehaviour {
 
     void Start()
     {
-        maxHealth = 100F;
+        maxHealth = 300;
         curHealth = maxHealth;
-        
 
-        other = GameObject.Find("GameManager");
+        enemyhealthbar.value = CalculateHealth();
+
+        other = GameObject.Find("CharacterHealth");
         hand_R = GameObject.Find("Hand_R");
-        handCol = hand_R.GetComponent<BoxCollider2D>() as BoxCollider2D;
+        foot_R = GameObject.Find("Foot_R");
+        handCol = hand_R.GetComponent<BoxCollider2D>();
+        footCol = foot_R.GetComponent <BoxCollider2D>();
         //handCol.enabled = false;
         //healthRegeneration = 2;
         //healthRegenTimer = 0;
@@ -56,6 +67,7 @@ public class EnemyScript : MonoBehaviour {
 
     void Update()
     {
+        
         if (playerObject != null)
         {
             distanceFromTarget = Vector3.Distance(playerObject.transform.position, gameObject.transform.position);
@@ -100,16 +112,6 @@ public class EnemyScript : MonoBehaviour {
 
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-       
-           damage = Random.Range(30F, 40F);
-           other.gameObject.GetComponent<GameManager>().TakeSomeDamage(damage);
-
-    }
-
-
-
     void Chase()
     {
         float movementDistance = moveSpeed * Time.deltaTime;
@@ -124,10 +126,16 @@ public class EnemyScript : MonoBehaviour {
             moveSpeed = 20;
         }
 
-        if (distanceFromTarget < 8.0f) {
+        if (distanceFromTarget < 4.5f) {
             anim.SetBool("EnemyWalk", false);
             handCol.enabled = true;
-            anim.SetInteger("RandomATK", 1);
+            footCol.enabled = true;
+            if(anim.GetInteger("RandomATK") == 0)
+            {
+                int r = (int)Random.Range(1, 3);
+                anim.SetInteger("RandomATK", r);
+            }
+            
             moveSpeed = 0;
         }
     }
@@ -135,7 +143,7 @@ public class EnemyScript : MonoBehaviour {
     void Die()
     {
         if (playerObject != null)
-            other.GetComponent<GameManager>().Die();
+            other.GetComponent<CharacterHealth>().Die();
     }
 
  
@@ -144,6 +152,37 @@ public class EnemyScript : MonoBehaviour {
         int r = (int)Random.Range(1, 3);
         anim.SetInteger("RandomATK", r);
     }
+    public void RandomATKNull()
+    { 
+        anim.SetInteger("RandomATK", 0);
+        anim.Play("EnemyIdle");
+    }
+
+    public void TookDamage(float damage)
+    {
+        if(curHealth <= 0F)
+        {
+            
+        }
+
+        curHealth -= damage;
+
+        enemyhealthbar.value = CalculateHealth();
+
+
+    }
+
+    void Flip()
+    {
+        
+
+    }
+
+    float CalculateHealth()
+    {
+        return curHealth / maxHealth;
+    }
+
 
     /*public void Fleeing()
     {
