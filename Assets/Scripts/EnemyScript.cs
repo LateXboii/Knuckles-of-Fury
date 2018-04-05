@@ -18,7 +18,6 @@ public class EnemyScript : MonoBehaviour {
     BoxCollider2D footCol;
     Animator anim;
     public Slider enemyhealthbar;
-    private bool isDead = false;
     public float moveSpeed;
     public float distanceFromTarget;
     public GameObject playerObject;
@@ -29,6 +28,7 @@ public class EnemyScript : MonoBehaviour {
     bool hasSpottedPlayer;
     float reactionTime;
     float attacTimer = 0f;
+    private bool faceRight = false;
 
    
 
@@ -41,7 +41,7 @@ public class EnemyScript : MonoBehaviour {
 
     void Start()
     {
-        maxHealth = 300;
+        maxHealth = 200;
         curHealth = maxHealth;
 
         enemyhealthbar.value = CalculateHealth();
@@ -63,6 +63,8 @@ public class EnemyScript : MonoBehaviour {
     void FixedUpdate()
     {
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+
+        
     }
 
     void Update()
@@ -84,6 +86,9 @@ public class EnemyScript : MonoBehaviour {
         {
             Chase();
         }
+
+        
+               
     }
 
     public void Idle()
@@ -124,9 +129,11 @@ public class EnemyScript : MonoBehaviour {
             anim.SetInteger("RandomATK", 0);
             anim.SetBool("EnemyWalk", true);
             moveSpeed = 20;
+            
+            
         }
 
-        if (distanceFromTarget < 4.5f) {
+        if (distanceFromTarget < 4.5f ) {
             anim.SetBool("EnemyWalk", false);
             handCol.enabled = true;
             footCol.enabled = true;
@@ -135,7 +142,7 @@ public class EnemyScript : MonoBehaviour {
                 int r = (int)Random.Range(1, 3);
                 anim.SetInteger("RandomATK", r);
             }
-            
+
             moveSpeed = 0;
         }
     }
@@ -172,11 +179,7 @@ public class EnemyScript : MonoBehaviour {
 
     }
 
-    void Flip()
-    {
-        
-
-    }
+    
 
     float CalculateHealth()
     {
