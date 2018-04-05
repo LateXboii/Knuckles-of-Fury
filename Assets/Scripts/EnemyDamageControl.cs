@@ -31,7 +31,7 @@ public class EnemyDamageControl : MonoBehaviour {
 
             if (this.gameObject.tag == "Paw_left")
             {
-                damage = 20;
+                damage = 40;
                 enmi_script.TookDamage(damage);
             }
         }
