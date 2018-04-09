@@ -145,7 +145,7 @@ public class EnemyScript : MonoBehaviour {
             
         }
 
-        if (distanceFromTarget < 4.5f ) {
+        if (distanceFromTarget < 5.0f ) {
             anim.SetBool("EnemyWalk", false);
             handCol.enabled = true;
             footCol.enabled = true;
