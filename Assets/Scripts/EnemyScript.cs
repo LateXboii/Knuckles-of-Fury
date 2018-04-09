@@ -28,7 +28,8 @@ public class EnemyScript : MonoBehaviour {
     bool hasSpottedPlayer;
     float reactionTime;
     float attacTimer = 0f;
-    private bool faceRight = false;
+    private bool facingright = false;
+  
 
    
 
@@ -63,7 +64,7 @@ public class EnemyScript : MonoBehaviour {
     void FixedUpdate()
     {
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
-
+        
         
     }
 
@@ -123,6 +124,17 @@ public class EnemyScript : MonoBehaviour {
         if(target != null)
             transform.position = Vector3.MoveTowards(transform.position, target.position, movementDistance);
 
+        if(transform.position.x > target.position.x && facingright)
+        {
+           
+            Flip();
+        }
+
+        if(transform.position.x < target.position.x && !facingright)
+        {
+            Flip();
+           
+        }
 
         if (distanceFromTarget > 8.0f) {
             
@@ -140,6 +152,7 @@ public class EnemyScript : MonoBehaviour {
             if(anim.GetInteger("RandomATK") == 0)
             {
                 int r = (int)Random.Range(1, 3);
+                attacTimer = 2F;
                 anim.SetInteger("RandomATK", r);
             }
 
@@ -169,7 +182,7 @@ public class EnemyScript : MonoBehaviour {
     {
         if(curHealth <= 0F)
         {
-            
+            Death();
         }
 
         curHealth -= damage;
@@ -179,12 +192,27 @@ public class EnemyScript : MonoBehaviour {
 
     }
 
+    private void Flip()
+    {
+        facingright = !facingright;
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
+    }
     
 
     float CalculateHealth()
     {
         return curHealth / maxHealth;
     }
+
+
+    void Death()
+    {
+        Destroy(gameObject);
+    }
+
+
 
 
     /*public void Fleeing()
