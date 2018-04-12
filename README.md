@@ -1,2 +1,3 @@
-PLEASE REMEMBER TO UPDATE GIT!!!!
-
+Pull first
+Then Commit changes
+And then push
