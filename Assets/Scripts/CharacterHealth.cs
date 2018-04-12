@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class CharacterHealth : MonoBehaviour {
 
-     float maxHealth;
-     float curHealth;
+    float maxHealth;
+    float curHealth;
     public Slider healthBar;
 
     
@@ -42,7 +42,14 @@ public class CharacterHealth : MonoBehaviour {
 
     }
 
-   public void TakeSomeDamage(float damage)
+    public void Addhealth(int healthToAdd)
+    {
+        curHealth += healthToAdd;
+
+        healthBar.value = CalculateHealth();
+    }
+
+    public void TakeSomeDamage(float damage)
     {
 
         if (curHealth <= 0F)
