@@ -6,14 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
-    
+    GameObject paw_left;
+    GameObject arm_left;
+    BoxCollider2D armCol;
+    BoxCollider2D pawCol;
     public float walkSpeed;
     public float runSpeed;
-    public float jumpKickPowah;
+    public float jumpKickPower;
     public float jumpPower;
     private bool facingright = false;
-    bool isAttacking;
     bool isTouchingGround;
+    bool playerMoved;
    
 
     Animator anim;
@@ -22,7 +25,13 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Start()
     {
-        
+      
+        arm_left = GameObject.Find("Arm_left");
+        paw_left = GameObject.Find("Paw_left");
+        armCol = arm_left.GetComponent<BoxCollider2D>();
+        pawCol = paw_left.GetComponent<BoxCollider2D>();
+        pawCol.enabled = false;
+        armCol.enabled = false;
         anim = GetComponent<Animator>();
         rb2D = GetComponent<Rigidbody2D>();
         Debug.Log("Parent transform: " + transform.position);
@@ -33,76 +42,100 @@ public class PlayerController : MonoBehaviour {
     void FixedUpdate()
     {
 
-        float speed = 0;
-        float horizontal = Input.GetAxis("Horizontal");
-        Flip(horizontal);
-
-
-        if (horizontal != 0F)
-        {
-       
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                speed = runSpeed;
-                
-            }
-            else if (Input.GetKeyUp(KeyCode.LeftShift))
-            {
-                speed = walkSpeed;
-                anim.Play("NekoWalk");
-               
-                
-            }
-            else
-            {
-                speed = walkSpeed;
-            }
-
-            PlayerMovement(horizontal,speed);
-          
-        }
-
-        else if (horizontal == 0F)
-        {
-            speed = 0;
-        }
+         float speed = 0;
+         float horizontal = Input.GetAxis("Horizontal");
+         Flip(horizontal);
 
         
-        //Debug.Log(horizontal);
-        anim.SetFloat("Speed", speed);
-       
+            if (horizontal != 0F)
+            {
 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            isAttacking = true;
-            isTouchingGround = true;
-            Debug.Log("Hyökätään");
-            anim.SetBool("Hitting", true);
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    speed = runSpeed;
 
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.Z) && isTouchingGround == true)
-        {
-      
-            Debug.Log("Potkitaan");
-            isAttacking = true;
-            anim.SetBool("Kicking", true);
-            rb2D.AddForce(Vector2.up * jumpKickPowah, ForceMode2D.Impulse);
-            isTouchingGround = false;
+                }
+                else if (Input.GetKeyUp(KeyCode.LeftShift))
+                {
+                    speed = walkSpeed;
+                    anim.Play("NekoWalk");
 
 
-        }
+                }
+                else
+                {
+                    speed = walkSpeed;
+                }
 
-        if(Input.GetKeyDown(KeyCode.Space) && isTouchingGround == true)
-        {
-            anim.SetBool("Jumping", true);
-            rb2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-            isTouchingGround = false;
-                
-        }
+                PlayerMovement(horizontal, speed);
 
- 
+            }
+
+            else if (horizontal == 0F)
+            {
+                speed = 0;
+            }
+
+
+
+
+            //Debug.Log(horizontal);
+            anim.SetFloat("Speed", speed);
+        
+
+
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+
+                isTouchingGround = true;
+                armCol.enabled = true;
+                playerMoved = false;
+                Debug.Log("Hyökätään");
+                anim.SetBool("Hitting", true);
+
+            }
+
+            else if (playerMoved == true)
+            {
+                armCol.enabled = false;
+            }
+
+
+
+
+
+            if (Input.GetKeyDown(KeyCode.Z) && isTouchingGround == true)
+            {
+
+                Debug.Log("Potkitaan");
+                playerMoved = false;
+                pawCol.enabled = true;
+                anim.SetBool("Kicking", true);
+                rb2D.AddForce(Vector2.up * jumpKickPower, ForceMode2D.Impulse);
+                isTouchingGround = false;
+
+
+            }
+
+            else if (playerMoved == true)
+            {
+                pawCol.enabled = false;
+            }
+
+
+
+
+
+            if (Input.GetKeyDown(KeyCode.Space) && isTouchingGround == true)
+            {
+                anim.SetBool("Jumping", true);
+                rb2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+                isTouchingGround = false;
+
+            }
+
+
+        
     }
 
 
@@ -161,6 +194,18 @@ public class PlayerController : MonoBehaviour {
                 transform.GetChild(i).position = transform.position;
             }
         }
+    }
+
+    public void PlayerActionsDisabled()
+    {
+        armCol.enabled = false;
+        pawCol.enabled = false;
+    }
+
+    public void PlayerActionsEnabled()
+    {
+        armCol.enabled = true;
+        pawCol.enabled = true;
     }
 
    
