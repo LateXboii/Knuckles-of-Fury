@@ -18,6 +18,7 @@ public class EnemyScript : MonoBehaviour
     BoxCollider2D handCol;
     BoxCollider2D footCol;
     Animator anim;
+    GameObject objectname;
     public Slider enemyhealthbar;
     public float moveSpeed;
     public float distanceFromTarget;
@@ -25,48 +26,50 @@ public class EnemyScript : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius;
     public LayerMask whatIsGround;
-    private bool grounded;
+    bool grounded;
     bool hasSpottedPlayer;
-    float reactionTime;
+
     private bool facingright = false;
     bool isDead = false;
     bool takingDamage = false;
-
-
-
-
-
-
-    //float healthRegeneration;
-    //float healthRegenTimer;
-
+   
+    
 
 
     void Start()
     {
-        maxHealth = 150;
+        grounded = true;
         curHealth = maxHealth;
 
         enemyhealthbar.value = CalculateHealth();
-
+        if(name == "Enemi3")
+        {
+            hand_R = GameObject.Find("Right_Hand");
+            foot_R = GameObject.Find("Right_Foot");
+        }
+        else if(name == "Enemi1")
+        {
+            hand_R = GameObject.Find("Hand_R");
+            foot_R = GameObject.Find("Foot_R");
+        }
         other = GameObject.Find("CharacterHealth");
-        hand_R = GameObject.Find("Hand_R");
-        foot_R = GameObject.Find("Foot_R");
         handCol = hand_R.GetComponent<BoxCollider2D>();
         footCol = foot_R.GetComponent<BoxCollider2D>();
         handCol.enabled = false;
         footCol.enabled = false;
-        //healthRegeneration = 2;
-        //healthRegenTimer = 0;
+
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         anim = GetComponent<Animator>();
         myTransform = GetComponent<Transform>();
         hasSpottedPlayer = false;
+
+        
     }
 
     void FixedUpdate()
     {
-        grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+        if (groundCheck != null)
+            grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
 
 
     }
@@ -76,8 +79,9 @@ public class EnemyScript : MonoBehaviour
 
         if (playerObject != null)
         {
-            distanceFromTarget = Vector3.Distance(playerObject.transform.position, gameObject.transform.position);
-            Idle();
+
+            distanceFromTarget = Vector2.Distance(playerObject.transform.position, gameObject.transform.position);
+       
 
         }
         else if (playerObject == null)
@@ -86,46 +90,23 @@ public class EnemyScript : MonoBehaviour
 
         }
 
-        if (grounded & hasSpottedPlayer)
-        {
-            Chase();
-        }
-
-
-
-    }
-
-    public void Idle()
-    {
         if (distanceFromTarget < 50)
         {
-            SawPlayer();
-        }
-    }
-
-    public void SawPlayer()
-    {
-        if (!hasSpottedPlayer)
-        {
-            hasSpottedPlayer = true;
-        }
-
-        if (reactionTime < 0)
-        {
-            reactionTime = 50;
             Chase();
         }
-        {
-            reactionTime -= 1;
-        }
-
     }
+
 
     void Chase()
     {
         float movementDistance = moveSpeed * Time.deltaTime;
+        Debug.Log("movementDistance: " + movementDistance);
         if (target != null)
-            transform.position = Vector3.MoveTowards(transform.position, target.position, movementDistance);
+        {
+            transform.position = Vector2.MoveTowards(transform.position, target.position, movementDistance);
+            
+   
+        }
 
         if (transform.position.x > target.position.x && facingright)
         {
@@ -139,19 +120,24 @@ public class EnemyScript : MonoBehaviour
 
         }
 
-        if (distanceFromTarget > 8.0f)
+        if (distanceFromTarget > 10.0f )
         {
+            
+
             handCol.enabled = false;
             footCol.enabled = false;
             anim.SetInteger("RandomATK", 0);
             anim.SetBool("EnemyWalk", true);
-            moveSpeed = 20;
+            moveSpeed = 16;
+            
 
 
         }
 
-        if (distanceFromTarget < 5.0f)
+        if (distanceFromTarget < 5.3f )
         {
+            
+
             anim.SetBool("EnemyWalk", false);
             if (anim.GetInteger("RandomATK") == 0)
             {
@@ -190,7 +176,7 @@ public class EnemyScript : MonoBehaviour
 
     public void TookDamage(float damage)
     {
-        if (curHealth <= 0F)
+        if (curHealth <= 50F)
         {
             Death();
         }
@@ -211,7 +197,7 @@ public class EnemyScript : MonoBehaviour
     private void Flip()
     {
         facingright = !facingright;
-        Vector3 theScale = transform.localScale;
+        Vector2 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
     }
@@ -245,7 +231,20 @@ public class EnemyScript : MonoBehaviour
     {
         anim.SetBool("EnemyHit2", false);
         takingDamage = false;
-        
+
+    }
+
+    void ResetChildPositions()
+    {
+        int childs = transform.childCount;
+
+        for (int i = 0; i < childs; i++)
+        {
+            if (transform.GetChild(i).IsChildOf(transform))
+            {
+                transform.GetChild(i).position = transform.position;
+            }
+        }
     }
 
 
@@ -256,7 +255,7 @@ public class EnemyScript : MonoBehaviour
         awayFromPlayer.Normalize();
 
         transform.LookAt(transform.position + awayFromPlayer);
-        /*if (curHealth < 5)
+        if (curHealth < 5)
         {
             float dampening = 30;
             transform.position = new Vector3(transform.position.x + awayFromPlayer.x / dampening,
@@ -274,7 +273,8 @@ public class EnemyScript : MonoBehaviour
         else
         {
             Chase();
-        }
-    }*/
-
+     aa   }*/
 }
+
+
+

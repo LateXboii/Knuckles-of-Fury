@@ -22,6 +22,7 @@ public class EnemyDamageControl : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        
         if (col.gameObject.CompareTag("Player"))
         {
             if (gameObject.tag == "Hand_R")
