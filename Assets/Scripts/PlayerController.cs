@@ -87,14 +87,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             PlayerActionsEnabled();
-            Debug.Log("Hyökätään");
             anim.SetBool("Hitting", true);
         }
 
         if (Input.GetKeyDown(KeyCode.Z) && isTouchingGround == true)
         {
             PlayerActionsEnabled();
-            Debug.Log("Potkitaan");
             anim.SetBool("Kicking", true);
             rb2D.AddForce(Vector2.up * jumpKickPower, ForceMode2D.Impulse);
             isTouchingGround = false;
@@ -108,6 +106,7 @@ public class PlayerController : MonoBehaviour
             isTouchingGround = false;
             
             
+            
         }
 
     }
@@ -118,7 +117,7 @@ public class PlayerController : MonoBehaviour
 
         if (coll.gameObject.tag == "Enemy")
         {
-            Debug.Log("Collision tuli");
+            Debug.Log("Collision came");
         }
         if (coll.gameObject.tag == "Ground")
         {
@@ -126,6 +125,7 @@ public class PlayerController : MonoBehaviour
 
         }
 
+       
 
     }
 
@@ -146,7 +146,6 @@ public class PlayerController : MonoBehaviour
     void PlayerMovement(float direction, float speed)
     {
 
-        Debug.Log("Move");
         transform.Translate(Vector3.right * (speed * direction) * Time.deltaTime);
 
         //rigidbody2D.AddForce(new Vector2(direction * maxSpeed, 0), ForceMode2D.Force);
@@ -188,10 +187,7 @@ public class PlayerController : MonoBehaviour
         pawCol.enabled = true;
     }
 
-    void Jumping()
-    {
-        
-    }
+    
 
 
    

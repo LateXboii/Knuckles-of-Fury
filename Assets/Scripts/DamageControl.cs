@@ -48,5 +48,7 @@ public class DamageControl : MonoBehaviour
                 }
             }
         }
+
     }
+  
 }

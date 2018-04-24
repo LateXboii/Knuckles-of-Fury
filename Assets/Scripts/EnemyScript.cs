@@ -11,43 +11,38 @@ public class EnemyScript : MonoBehaviour
     public float curHealth;
 
 
-    Transform myTransform;
     GameObject other;
     GameObject hand_R;
     GameObject foot_R;
     BoxCollider2D handCol;
     BoxCollider2D footCol;
     Animator anim;
-    GameObject objectname;
     public Slider enemyhealthbar;
     public float moveSpeed;
     public float distanceFromTarget;
     public GameObject playerObject;
-    public Transform groundCheck;
-    public float groundCheckRadius;
-    public LayerMask whatIsGround;
-    bool grounded;
-    bool hasSpottedPlayer;
+   
 
     private bool facingright = false;
     bool isDead = false;
-    bool takingDamage = false;
-   
-    
+    bool takinghits;
+
+
+
 
 
     void Start()
     {
-        grounded = true;
+        takinghits = false;
         curHealth = maxHealth;
 
         enemyhealthbar.value = CalculateHealth();
-        if(name == "Enemi3")
+        if (name == "Enemi3")
         {
             hand_R = GameObject.Find("Right_Hand");
             foot_R = GameObject.Find("Right_Foot");
         }
-        else if(name == "Enemi1")
+        else if (name == "Enemi1")
         {
             hand_R = GameObject.Find("Hand_R");
             foot_R = GameObject.Find("Foot_R");
@@ -60,19 +55,13 @@ public class EnemyScript : MonoBehaviour
 
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         anim = GetComponent<Animator>();
-        myTransform = GetComponent<Transform>();
-        hasSpottedPlayer = false;
 
         
-    }
-
-    void FixedUpdate()
-    {
-        if (groundCheck != null)
-            grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
 
 
     }
+
+   
 
     void Update()
     {
@@ -81,7 +70,7 @@ public class EnemyScript : MonoBehaviour
         {
 
             distanceFromTarget = Vector2.Distance(playerObject.transform.position, gameObject.transform.position);
-       
+
 
         }
         else if (playerObject == null)
@@ -94,18 +83,20 @@ public class EnemyScript : MonoBehaviour
         {
             Chase();
         }
+        else if(distanceFromTarget > 50)
+        {
+            DisableWalk();
+        }
+
     }
 
 
     void Chase()
     {
         float movementDistance = moveSpeed * Time.deltaTime;
-        Debug.Log("movementDistance: " + movementDistance);
         if (target != null)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, movementDistance);
-            
-   
+            transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), new Vector2(target.position.x, transform.position.y), movementDistance);
         }
 
         if (transform.position.x > target.position.x && facingright)
@@ -120,33 +111,31 @@ public class EnemyScript : MonoBehaviour
 
         }
 
-        if (distanceFromTarget > 10.0f )
+        if (distanceFromTarget > 8.0f)
         {
-            
-
+            takinghits = false;
             handCol.enabled = false;
             footCol.enabled = false;
             anim.SetInteger("RandomATK", 0);
             anim.SetBool("EnemyWalk", true);
-            moveSpeed = 16;
-            
-
+            moveSpeed = 20;
 
         }
 
-        if (distanceFromTarget < 5.3f )
+
+        if (distanceFromTarget < 4.8f)
         {
-            
-
-            anim.SetBool("EnemyWalk", false);
-            if (anim.GetInteger("RandomATK") == 0)
+            if (!takinghits)
             {
-
-                int r = (int)Random.Range(1, 3);
-                anim.SetInteger("RandomATK", r);
+                anim.SetBool("EnemyWalk", false);
+                if (anim.GetInteger("RandomATK") == 0)
+                {
+                    
+                    int r = (int)Random.Range(1, 3);
+                    anim.SetInteger("RandomATK", r);
+                }
+                moveSpeed = 0;
             }
-
-            moveSpeed = 0;
         }
     }
 
@@ -157,20 +146,13 @@ public class EnemyScript : MonoBehaviour
     }
 
 
-    void Attack()
-    {
-        if (!takingDamage)
-        {
-            int r = (int)Random.Range(1, 3);
-            anim.SetInteger("RandomATK", r);
-        }
-    }
+ 
     public void RandomATKNull()
     {
 
         anim.SetInteger("RandomATK", 0);
         anim.Play("EnemyIdle");
-
+        takinghits = false;
 
     }
 
@@ -184,7 +166,7 @@ public class EnemyScript : MonoBehaviour
         if (!isDead)
         {
             anim.SetInteger("RandomATK", 0);
-            takingDamage = true;
+            takinghits = true;
             anim.SetBool("EnemyHit2", true);
         }
 
@@ -211,6 +193,7 @@ public class EnemyScript : MonoBehaviour
 
     void Death()
     {
+        isDead = true;
         Destroy(gameObject);
     }
 
@@ -230,7 +213,7 @@ public class EnemyScript : MonoBehaviour
     void EnemyAnimationPlayed()
     {
         anim.SetBool("EnemyHit2", false);
-        takingDamage = false;
+        takinghits = false;
 
     }
 
@@ -245,6 +228,12 @@ public class EnemyScript : MonoBehaviour
                 transform.GetChild(i).position = transform.position;
             }
         }
+    }
+
+    public void DisableWalk()
+    {
+        anim.SetBool("EnemyWalk", false);
+        anim.Play("EnemyIdle");
     }
 
 
