@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
-    
     public float walkSpeed;
     public float runSpeed;
     public float jumpKickPowah;
@@ -14,7 +13,8 @@ public class PlayerController : MonoBehaviour {
     private bool facingright = false;
     bool isAttacking;
     bool isTouchingGround;
-   
+    private Slider slider;
+    GameObject playerSpecialSlider;
 
     Animator anim;
     Rigidbody2D rb2D;
@@ -22,13 +22,13 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Start()
     {
-        
+        playerSpecialSlider = GameObject.Find("Special Bar");
         anim = GetComponent<Animator>();
         rb2D = GetComponent<Rigidbody2D>();
         Debug.Log("Parent transform: " + transform.position);
         //ResetChildPositions();
-
     }
+
 
     void FixedUpdate()
     {
@@ -40,26 +40,26 @@ public class PlayerController : MonoBehaviour {
 
         if (horizontal != 0F)
         {
-       
+
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 speed = runSpeed;
-                
+
             }
             else if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 speed = walkSpeed;
                 anim.Play("NekoWalk");
-               
-                
+
+
             }
             else
             {
                 speed = walkSpeed;
             }
 
-            PlayerMovement(horizontal,speed);
-          
+            PlayerMovement(horizontal, speed);
+
         }
 
         else if (horizontal == 0F)
@@ -67,10 +67,10 @@ public class PlayerController : MonoBehaviour {
             speed = 0;
         }
 
-        
+
         //Debug.Log(horizontal);
         anim.SetFloat("Speed", speed);
-       
+
 
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Z) && isTouchingGround == true)
         {
-      
+
             Debug.Log("Potkitaan");
             isAttacking = true;
             anim.SetBool("Kicking", true);
@@ -94,15 +94,20 @@ public class PlayerController : MonoBehaviour {
 
         }
 
-        if(Input.GetKeyDown(KeyCode.Space) && isTouchingGround == true)
+        if (Input.GetKeyDown(KeyCode.Space) && isTouchingGround == true)
         {
             anim.SetBool("Jumping", true);
             rb2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             isTouchingGround = false;
-                
+
         }
 
- 
+        if (Input.GetKeyDown(KeyCode.S) && playerSpecialSlider.GetComponent<SpecialBarScript>().CanUse)
+        {
+            rb2D.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
+            rb2D.AddForce(Vector2.right * 10000, ForceMode2D.Impulse);
+        }
+
     }
 
 
