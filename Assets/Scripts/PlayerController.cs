@@ -14,8 +14,8 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed;
     public float runSpeed;
     public float jumpKickPower;
-    public float jumpPower;
-    private bool facingright = false;
+    float jumpPower = 27;
+    bool facingright = false;
     bool isTouchingGround;
     bool isJumping;
    
@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 speed = runSpeed;
-               
+                
 
             }
             else if (Input.GetKeyUp(KeyCode.LeftShift))
@@ -66,10 +66,13 @@ public class PlayerController : MonoBehaviour
                 anim.Play("NekoWalk");
                 
                 
+                
             }
             else
             {
                 speed = walkSpeed;
+                
+                
                 
             }
 
@@ -96,6 +99,8 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("Kicking", true);
             rb2D.AddForce(Vector2.up * jumpKickPower, ForceMode2D.Impulse);
             isTouchingGround = false;
+            
+
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isTouchingGround == true)
@@ -107,6 +112,8 @@ public class PlayerController : MonoBehaviour
             
             
             
+            
+            
         }
 
     }
@@ -115,17 +122,13 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D coll)
     {
 
-        if (coll.gameObject.tag == "Enemy")
-        {
-            Debug.Log("Collision came");
-        }
+       
         if (coll.gameObject.tag == "Ground")
         {
             isTouchingGround = true;
 
         }
 
-       
 
     }
 
