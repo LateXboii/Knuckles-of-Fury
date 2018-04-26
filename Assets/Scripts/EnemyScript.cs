@@ -19,10 +19,9 @@ public class EnemyScript : MonoBehaviour
     Animator anim;
     public Slider enemyhealthbar;
     public float moveSpeed;
-    public float distanceFromTarget;
     public GameObject playerObject;
-   
-
+    
+    public float targetDistanceX;
     private bool facingright = false;
     bool isDead = false;
     bool takinghits;
@@ -68,10 +67,7 @@ public class EnemyScript : MonoBehaviour
 
         if (playerObject != null)
         {
-
-            distanceFromTarget = Vector2.Distance(playerObject.transform.position, gameObject.transform.position);
-
-
+            targetDistanceX =  Mathf.Abs(transform.position.x - playerObject.transform.position.x);
         }
         else if (playerObject == null)
         {
@@ -79,15 +75,16 @@ public class EnemyScript : MonoBehaviour
 
         }
 
-        if (distanceFromTarget < 50)
+        if (targetDistanceX < 50)
         {
             Chase();
         }
-        else if(distanceFromTarget > 50)
+        else if(targetDistanceX > 50)
         {
             DisableWalk();
         }
 
+       
     }
 
 
@@ -111,7 +108,7 @@ public class EnemyScript : MonoBehaviour
 
         }
 
-        if (distanceFromTarget > 8.0f)
+        if (targetDistanceX> 8.0f)
         {
             takinghits = false;
             handCol.enabled = false;
@@ -123,7 +120,7 @@ public class EnemyScript : MonoBehaviour
         }
 
 
-        if (distanceFromTarget < 4.8f)
+        if (targetDistanceX < 4.8f)
         {
             if (!takinghits)
             {
@@ -234,6 +231,7 @@ public class EnemyScript : MonoBehaviour
     {
         anim.SetBool("EnemyWalk", false);
         anim.Play("EnemyIdle");
+        
     }
 
 
