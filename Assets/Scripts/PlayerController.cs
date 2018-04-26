@@ -4,17 +4,27 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
+    GameObject paw_left;
+    GameObject arm_left;
+    BoxCollider2D armCol;
+    BoxCollider2D pawCol;
 
     public float walkSpeed;
     public float runSpeed;
-    public float jumpKickPowah;
+    public float jumpKickPower;
     public float jumpPower;
     private bool facingright = false;
-    bool isAttacking;
     bool isTouchingGround;
+
     private Slider slider;
     GameObject playerSpecialSlider;
+
+    bool isJumping;
+
+
+
 
     Animator anim;
     Rigidbody2D rb2D;
@@ -22,7 +32,14 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Start()
     {
+
         playerSpecialSlider = GameObject.Find("Special Bar");
+        arm_left = GameObject.Find("Arm_left");
+        paw_left = GameObject.Find("Paw_left");
+        armCol = arm_left.GetComponent<BoxCollider2D>();
+        pawCol = paw_left.GetComponent<BoxCollider2D>();
+        armCol.enabled = false;
+        pawCol.enabled = false;
         anim = GetComponent<Animator>();
         rb2D = GetComponent<Rigidbody2D>();
         Debug.Log("Parent transform: " + transform.position);
@@ -37,13 +54,18 @@ public class PlayerController : MonoBehaviour {
         float horizontal = Input.GetAxis("Horizontal");
         Flip(horizontal);
 
-
+        
         if (horizontal != 0F)
         {
+
+            PlayerActionsDisabled();
+
 
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 speed = runSpeed;
+
+               
 
             }
             else if (Input.GetKeyUp(KeyCode.LeftShift))
@@ -52,10 +74,13 @@ public class PlayerController : MonoBehaviour {
                 anim.Play("NekoWalk");
 
 
+                
+                
             }
             else
             {
                 speed = walkSpeed;
+                
             }
 
             PlayerMovement(horizontal, speed);
@@ -64,6 +89,7 @@ public class PlayerController : MonoBehaviour {
 
         else if (horizontal == 0F)
         {
+            
             speed = 0;
         }
 
@@ -72,30 +98,27 @@ public class PlayerController : MonoBehaviour {
         anim.SetFloat("Speed", speed);
 
 
+
         if (Input.GetKeyDown(KeyCode.A))
         {
-            isAttacking = true;
-            isTouchingGround = true;
-            Debug.Log("Hyökätään");
+            PlayerActionsEnabled();
             anim.SetBool("Hitting", true);
-
         }
-
 
         if (Input.GetKeyDown(KeyCode.Z) && isTouchingGround == true)
         {
 
             Debug.Log("Potkitaan");
             isAttacking = true;
+            PlayerActionsEnabled();
             anim.SetBool("Kicking", true);
-            rb2D.AddForce(Vector2.up * jumpKickPowah, ForceMode2D.Impulse);
+            rb2D.AddForce(Vector2.up * jumpKickPower, ForceMode2D.Impulse);
             isTouchingGround = false;
-
-
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isTouchingGround == true)
         {
+            PlayerActionsDisabled();
             anim.SetBool("Jumping", true);
             rb2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             isTouchingGround = false;
@@ -106,6 +129,9 @@ public class PlayerController : MonoBehaviour {
         {
             rb2D.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
             rb2D.AddForce(Vector2.right * 10000, ForceMode2D.Impulse);
+            
+            
+            
         }
 
     }
@@ -113,22 +139,25 @@ public class PlayerController : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll)
     {
+
         if (coll.gameObject.tag == "Enemy")
         {
-            Debug.Log("Collision tuli");
+            Debug.Log("Collision came");
         }
         if (coll.gameObject.tag == "Ground")
         {
             isTouchingGround = true;
- 
+
         }
-   
+
+       
+
     }
 
 
     private void Flip(float horizontal)
     {
-        if(( horizontal < 0 && facingright == false || horizontal > 0 && facingright == true))
+        if ((horizontal < 0 && facingright == false || horizontal > 0 && facingright == true))
         {
             facingright = !facingright;
             Vector3 theScale = transform.localScale;
@@ -141,11 +170,12 @@ public class PlayerController : MonoBehaviour {
 
     void PlayerMovement(float direction, float speed)
     {
-        Debug.Log("Move");
+
         transform.Translate(Vector3.right * (speed * direction) * Time.deltaTime);
+
         //rigidbody2D.AddForce(new Vector2(direction * maxSpeed, 0), ForceMode2D.Force);
-        
-  
+
+
 
     }
     void AnimationPlayed()
@@ -154,28 +184,44 @@ public class PlayerController : MonoBehaviour {
         anim.SetBool("Kicking", false);
         anim.SetBool("Jumping", false);
     }
+    
+
 
     void ResetChildPositions()
     {
         int childs = transform.childCount;
 
-        for(int i=0; i<childs; i++)
+        for (int i = 0; i < childs; i++)
         {
-            if(transform.GetChild(i).IsChildOf(transform))
+            if (transform.GetChild(i).IsChildOf(transform))
             {
                 transform.GetChild(i).position = transform.position;
             }
         }
     }
 
-   
+    public void PlayerActionsDisabled()
+    {
+        armCol.enabled = false;
+        pawCol.enabled = false;
+    }
 
-
-
+    public void PlayerActionsEnabled()
+    {
+        armCol.enabled = true;
+        pawCol.enabled = true;
+    }
 
     
 
 
-
    
+
+
+
+
+
+
+
+
 }

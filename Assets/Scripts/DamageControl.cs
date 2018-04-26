@@ -6,13 +6,18 @@ using UnityEngine;
 public class DamageControl : MonoBehaviour
 {
     public float damage;
-    public GameObject chrhealth;
-     CharacterHealth chr_script;
+    GameObject enemy;
+    EnemyScript enmiscript;
+    //GameObject[] enemies;
+
+
     // Use this for initialization
     void Start()
     {
-        chr_script = chrhealth.GetComponent<CharacterHealth>();
-       
+        // enemies  = GameObject.FindGameObjectsWithTag("Enemy");
+        //enmiscript = enemy.GetComponent<EnemyScript>();
+
+
 
     }
 
@@ -24,18 +29,26 @@ public class DamageControl : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Player"))
+        if (col.gameObject.CompareTag("Enemy"))
+        {
+            if (!enmiscript)
+                enmiscript = col.gameObject.GetComponent<EnemyScript>();
+            if (enmiscript)
             {
-            if (this.gameObject.tag == "Hand_R")
-            {
-                damage = 10F;
-                chr_script.TakeSomeDamage(damage);
-            }
-            if(this.gameObject.tag == "Foot_R")
-            {
-                damage = 20F;
-                chr_script.TakeSomeDamage(damage);
+                if (gameObject.tag == "Arm_left")
+                {
+                    damage = 20F;
+                    enmiscript.TookDamage(damage);
+
+                }
+                if (gameObject.tag == "Paw_left")
+                {
+                    damage = 40F;
+                    enmiscript.TookDamage(damage);
+                }
             }
         }
+
     }
+  
 }

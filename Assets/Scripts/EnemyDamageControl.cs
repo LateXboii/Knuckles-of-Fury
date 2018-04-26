@@ -5,12 +5,13 @@ using UnityEngine;
 public class EnemyDamageControl : MonoBehaviour {
 
     public int damage;
-    public GameObject enemi;
-    EnemyScript enmi_script;
+    GameObject player;
+    CharacterHealth chr_health;
 	// Use this for initialization
 	void Start ()
     {
-        enmi_script = enemi.GetComponent<EnemyScript>();
+        player = GameObject.Find("Neko");
+        chr_health = player.GetComponent<CharacterHealth>();
 	}
 	
 	// Update is called once per frame
@@ -21,18 +22,19 @@ public class EnemyDamageControl : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Enemy"))
+        
+        if (col.gameObject.CompareTag("Player"))
         {
-            if (this.gameObject.tag == "Arm_left")
+            if (gameObject.tag == "Hand_R")
             {
                 damage = 20;
-                enmi_script.TookDamage(damage);
+                chr_health.TakeSomeDamage(damage);
             }
 
-            if (this.gameObject.tag == "Paw_left")
+            if (gameObject.tag == "Foot_R")
             {
-                damage = 40;
-                enmi_script.TookDamage(damage);
+                damage = 30;
+                chr_health.TakeSomeDamage(damage);
             }
         }
     }

@@ -1,0 +1,253 @@
+fileFormatVersion: 2
+guid: 3057ce13403629b458ed6907bc16ac38
+timeCreated: 1523945133
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: sylastorso
+    21300002: sylasarmright
+    21300004: sylashead
+    21300006: sylasarmleft
+    21300008: sylashandleft
+    21300010: sylaslegleft
+    21300012: sylaseye
+    21300014: sylashandright
+    21300016: sylaslegright
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Windows Store Apps
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sylastorso
+      rect:
+        serializedVersion: 2
+        x: 3.5466013
+        y: 390.91565
+        width: 598.2826
+        height: 612.85547
+      alignment: 9
+      pivot: {x: 0.50971466, y: 0.5067824}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sylasarmright
+      rect:
+        serializedVersion: 2
+        x: 418.48428
+        y: 0
+        width: 255.54892
+        height: 373.57248
+      alignment: 9
+      pivot: {x: 0.48529148, y: 0.5139565}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sylashead
+      rect:
+        serializedVersion: 2
+        x: 29.360256
+        y: 44.051926
+        width: 302.4659
+        height: 302.84772
+      alignment: 9
+      pivot: {x: 0.48646718, y: 0.48026803}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sylasarmleft
+      rect:
+        serializedVersion: 2
+        x: 776.68994
+        y: 37.32469
+        width: 192.73755
+        height: 327.9898
+      alignment: 9
+      pivot: {x: 0.47115916, y: 0.5020745}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sylashandleft
+      rect:
+        serializedVersion: 2
+        x: 1097.2448
+        y: 131.94139
+        width: 104.801636
+        height: 129.86772
+      alignment: 9
+      pivot: {x: 0.45567274, y: 0.4586098}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sylaslegleft
+      rect:
+        serializedVersion: 2
+        x: 614.6126
+        y: 418.96167
+        width: 215.48749
+        height: 454.78595
+      alignment: 9
+      pivot: {x: 0.4983463, y: 0.4948225}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sylaseye
+      rect:
+        serializedVersion: 2
+        x: 631.5967
+        y: 923.7658
+        width: 98.329956
+        height: 85.756775
+      alignment: 9
+      pivot: {x: 0.5176786, y: 0.42835322}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sylashandright
+      rect:
+        serializedVersion: 2
+        x: 833.3233
+        y: 868.67596
+        width: 120.3147
+        height: 120.70178
+      alignment: 9
+      pivot: {x: 0.5126276, y: 0.50806236}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sylaslegright
+      rect:
+        serializedVersion: 2
+        x: 1020.13416
+        y: 549.38727
+        width: 235.20337
+        height: 448.72955
+      alignment: 9
+      pivot: {x: 0.4989973, y: 0.50723815}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 99873613835760
+  assetBundleName: 
+  assetBundleVariant: 
