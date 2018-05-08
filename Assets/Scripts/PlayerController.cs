@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
         {
 
             Debug.Log("Potkitaan");
-            isAttacking = true;
+            //isAttacking = true;
             PlayerActionsEnabled();
             anim.SetBool("Kicking", true);
             rb2D.AddForce(Vector2.up * jumpKickPower, ForceMode2D.Impulse);

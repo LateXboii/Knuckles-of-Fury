@@ -9,6 +9,7 @@ public class CharacterHealth : MonoBehaviour {
 
     float maxHealth;
     float curHealth;
+    Animator anim;
     public Slider healthBar;
 
     
@@ -19,6 +20,8 @@ public class CharacterHealth : MonoBehaviour {
         maxHealth = 10000F;
 
         curHealth = maxHealth;
+
+        anim = GetComponent<Animator>();
 
         healthBar.value = CalculateHealth();
 
@@ -58,6 +61,7 @@ public class CharacterHealth : MonoBehaviour {
         }
 
         curHealth -= damage;
+        
 
         healthBar.value = CalculateHealth();
     }

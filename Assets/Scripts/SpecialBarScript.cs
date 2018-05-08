@@ -24,6 +24,7 @@ public class SpecialBarScript : MonoBehaviour {
         if (CanUse && Input.GetKeyDown(KeyCode.S))
         {
             slider.value = 0f;
+            
         }
 	}
 }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class EnemyScript : MonoBehaviour
 {
 
-    public Transform target;
+    private Transform target;
     public float maxHealth;
     public float curHealth;
 
@@ -19,11 +19,11 @@ public class EnemyScript : MonoBehaviour
     Animator anim;
     public Slider enemyhealthbar;
     public float moveSpeed;
-    public GameObject playerObject;
+    private GameObject playerObject;
     
     public float targetDistanceX;
     private bool facingright = false;
-    bool isDead = false;
+   private bool isDead = false;
     bool takinghits;
 
 
@@ -52,11 +52,9 @@ public class EnemyScript : MonoBehaviour
         handCol.enabled = false;
         footCol.enabled = false;
 
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        playerObject = GameObject.FindWithTag("Player");
+        target = playerObject.GetComponent<Transform>();
         anim = GetComponent<Animator>();
-
-        
-
 
     }
 
@@ -67,11 +65,12 @@ public class EnemyScript : MonoBehaviour
 
         if (playerObject != null)
         {
-            targetDistanceX =  Mathf.Abs(transform.position.x - playerObject.transform.position.x);
+            targetDistanceX = Mathf.Abs(transform.position.x - playerObject.transform.position.x);
         }
         else if (playerObject == null)
         {
-            Die();
+            playerObject = GameObject.FindWithTag("Player");
+            target = playerObject.GetComponent<Transform>();
 
         }
 
@@ -79,59 +78,63 @@ public class EnemyScript : MonoBehaviour
         {
             Chase();
         }
-        else if(targetDistanceX > 50)
+        else if (targetDistanceX > 50)
         {
             DisableWalk();
         }
 
-       
     }
 
 
     void Chase()
     {
-        float movementDistance = moveSpeed * Time.deltaTime;
-        if (target != null)
-        {
-            transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), new Vector2(target.position.x, transform.position.y), movementDistance);
-        }
-
-        if (transform.position.x > target.position.x && facingright)
+        if (!isDead)
         {
 
-            Flip();
-        }
-
-        if (transform.position.x < target.position.x && !facingright)
-        {
-            Flip();
-
-        }
-
-        if (targetDistanceX> 8.0f)
-        {
-            takinghits = false;
-            handCol.enabled = false;
-            footCol.enabled = false;
-            anim.SetInteger("RandomATK", 0);
-            anim.SetBool("EnemyWalk", true);
-            moveSpeed = 20;
-
-        }
-
-
-        if (targetDistanceX < 4.8f)
-        {
-            if (!takinghits)
+            float movementDistance = moveSpeed * Time.deltaTime;
+            if (target != null)
             {
-                anim.SetBool("EnemyWalk", false);
-                if (anim.GetInteger("RandomATK") == 0)
+                transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), new Vector2(target.position.x, transform.position.y), movementDistance);
+            }
+
+            if (transform.position.x > target.position.x && facingright)
+            {
+
+                Flip();
+            }
+
+            if (transform.position.x < target.position.x && !facingright)
+            {
+                Flip();
+
+            }
+
+            if (targetDistanceX > 8.0f)
+            {
+                takinghits = false;
+                handCol.enabled = false;
+                footCol.enabled = false;
+                anim.SetInteger("RandomATK", 0);
+                anim.SetBool("EnemyWalk", true);
+                moveSpeed = 20;
+
+            }
+
+
+            if (targetDistanceX < 4.8f)
+            {
+                if (!takinghits)
                 {
                     
-                    int r = (int)Random.Range(1, 3);
-                    anim.SetInteger("RandomATK", r);
+                    anim.SetBool("EnemyWalk", false);
+                    if (anim.GetInteger("RandomATK") == 0)
+                    {
+
+                        int r = (int)Random.Range(1, 3);
+                        anim.SetInteger("RandomATK", r);
+                    }
+                    moveSpeed = 0;
                 }
-                moveSpeed = 0;
             }
         }
     }
@@ -156,7 +159,9 @@ public class EnemyScript : MonoBehaviour
     public void TookDamage(float damage)
     {
         if (curHealth <= 50F)
+
         {
+            isDead = true;
             Death();
         }
 
